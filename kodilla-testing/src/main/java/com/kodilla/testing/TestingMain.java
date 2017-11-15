@@ -15,17 +15,16 @@ public class TestingMain {
         } else {
             System.out.println("Error!");
         }
-        Calculator calculator = new Calculator(50, 30);
+        Calculator calculator = new Calculator();
 
-        System.out.println("Calculator Test:");
+        int addRes = calculator.add(200, 35);
+        int subRes = calculator.subtract(215, 75);
 
-        int result1 = calculator.getAdd();
-        System.out.println("Test - add: " + calculator.getA() + " + " + calculator.getB() + " = " +result1);
+        if ((addRes == 235) && (subRes == 140)) {
+            System.out.println("Calculator test OK");
+        } else {
+            System.out.println("Calculator has error!");
+        }
 
-        int result2 = calculator.getSubstract();
-        System.out.println("Test - substract: " + calculator.getA() + " - " + calculator.getB() + " = " + result2);
-
-        // tu umieść kolejny test ->
-        System.out.println("Test - pierwszy test jednostkowy:");
     }
 }
