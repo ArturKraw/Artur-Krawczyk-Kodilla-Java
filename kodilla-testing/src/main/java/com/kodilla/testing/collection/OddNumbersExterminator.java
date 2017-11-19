@@ -29,6 +29,7 @@ public class OddNumbersExterminator {
                 }
         }
         return getArray2();
+
     }
 
     public ArrayList<Integer> getExterminate() {

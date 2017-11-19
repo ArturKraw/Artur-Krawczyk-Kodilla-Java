@@ -24,12 +24,12 @@ import java.util.LinkedList;
         //do nothing
     }
 
-    public void getPostsQuantity() {
+    public int getPostsQuantity() {
         //return 100 temporarily
         return 100;
     }
 
-    public void getCommentsQuantity() {
+    public int getCommentsQuantity() {
         //return 100 temporarily
         return 100;
     }

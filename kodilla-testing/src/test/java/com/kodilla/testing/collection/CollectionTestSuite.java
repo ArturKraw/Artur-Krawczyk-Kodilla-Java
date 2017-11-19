@@ -62,7 +62,7 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorNormalList() {
 
-        int sizeNumbers = 10;
+        int sizeNumbers = 5;
 
         ArrayList<Integer> numbers = new ArrayList<Integer>(sizeNumbers); //main array
         ArrayList<Integer> evenNumbers = new ArrayList<Integer>(sizeNumbers); //result of program (exterminate)
@@ -71,7 +71,7 @@ public class CollectionTestSuite {
         //Given
         System.out.println("List nr 1t: numbers in test");
         for (int i =0 ; i < sizeNumbers ; i=i+1) {
-            numbers.add(i + 1 + (i * (i + 3)));
+            numbers.add(i + 4);
             System.out.println(i + "  " + numbers.get(i));
         }
 

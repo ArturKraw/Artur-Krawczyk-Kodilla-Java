@@ -1,45 +1,57 @@
 package com.kodilla.testing.forum;
 
-import com.kodilla.testing.user.SimpleUser;
 import org.junit.*;
+import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl;
 
-public class ForumTestSuite {
+@Ignore
+    public class ForumTestSuite {
+    private static int testCounter = 0;
 
 
-    @Before
-    public void before(){
-        System.out.println("Test Case: begin");
-    }
-    @After
-    public void after(){
-        System.out.println("Test Case: end");
-    }
     @BeforeClass
-    public static void beforeClass() {
-        System.out.println("Test Suite: begin");
+    public static void beforeAllTests()     {
+        System.out.println("This is the begining fo tests.");
     }
     @AfterClass
-    public static void afterClass() {
-        System.out.println("Test Suite: end");
+    public static void afterAllTests() {
+        System.out.println("All tests are finished.");
     }
+    @Before
+    public void beforeEveryTest(){
+        testCounter++;
+        System.out.println("Preparing to execute test #" + testCounter);
+    }
+
     @Test
-    public void testCaseUsername(){
+    public void testAddPost() {
         //Given
-        SimpleUser simpleUser = new SimpleUser("theForumUser", "John Smith");
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
         //When
-        String result = simpleUser.getUsername();
-        System.out.println("Testing " +result);
+        forumUser.addPost("mrsmith", "Hello everyone, this mu first contribution here!");
         //Then
-        Assert.assertEquals("theForumUser", result);
+        Assert.assertEquals(1, forumUser.getPostsQuantity());
+    }
+
+    @Test
+    public void testAddComment() {
+        //Given
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
+        ForumPost thePost = new ForumPost("Hello everyone," + "this is my first contribution here!", "mrsmith");
+        //When
+        forumUser.addComment(thePost,"mrsmith", "Thank you for all good words!");
+        //Then
+        Assert.assertEquals(1, forumUser.getCommentsQuantity());
     }
     @Test
-    public void testCaseRealname(){
+    public void testGetPost() {
         //Given
-        SimpleUser simpleUser = new SimpleUser("theForumUser", "John Smith");
+        ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
+        ForumPost thePost = new ForumPost("Hello everyone," + "this is my first contribution here!", "mrsmith");
         //When
-        String result = simpleUser.getRealname();
-        System.out.println("Testing " +result);
-            //Then
-        Assert.assertEquals("John Smith", result);
+        ForumPost retrievedPost;
+        retrievedPost = forumUser.getPost();
+        //Then
+        Assert.assertEquals(thePost, retrievedPost);
     }
+
 }
