@@ -15,9 +15,9 @@ public class OddNumbersExterminator {
         return array2;
     }
 
-    public ArrayList<Integer> exterminate (ArrayList<Integer> numbers, ArrayList<Integer> evenNumbers) {
-        this.array = numbers;
-        this.array2 = evenNumbers;
+    private ArrayList<Integer> exterminate (ArrayList<Integer> array) {
+        this.array = array;
+
         switch (array.size()) {
             case (0):
                 break;
@@ -28,6 +28,12 @@ public class OddNumbersExterminator {
                     }
                 }
         }
-         return (array2);
+        return getArray2();
     }
+
+    public ArrayList<Integer> getExterminate() {
+        return array2;
+    }
+
+
 }

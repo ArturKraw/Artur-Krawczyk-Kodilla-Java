@@ -15,14 +15,14 @@ public class CollectionTestSuite {
         System.out.println("Test Case: end");
     }
     @BeforeClass
-    public static void beforeClass() {
+    public void beforeClass() {
         System.out.println("Test Suite: begin");
     }
     @AfterClass
-    public static void afterClass() {
+    public void afterClass() {
         System.out.println("Test Suite: end");
     }
-
+/*
     @Test
     public void testOddNumbersExterminatorEmptyList() {
 
@@ -58,7 +58,7 @@ public class CollectionTestSuite {
             System.out.println("Program needs improvement(s)");
         }
     }
-
+*/
     @Test
     public void testOddNumbersExterminatorNormalList() {
 
@@ -101,7 +101,8 @@ public class CollectionTestSuite {
 
         OddNumbersExterminator oddNumbExt = new OddNumbersExterminator();
 
-            oddNumbExt.exterminate(numbers, evenNumbers);
+            oddNumbExt.exterminate(numbers);
+
 
         //When
         System.out.println("List nr " +
