@@ -7,6 +7,8 @@ public class OddNumbersExterminator {
     private ArrayList<Integer> array = new ArrayList<Integer>();
 
     public OddNumbersExterminator() {
+
+
     }
     public ArrayList<Integer> getArray() {
        return array;
@@ -15,7 +17,7 @@ public class OddNumbersExterminator {
         return array2;
     }
 
-    private ArrayList<Integer> exterminate (ArrayList<Integer> array) {
+    public ArrayList<Integer> exterminate (ArrayList<Integer> array) {
         this.array = array;
 
         switch (array.size()) {
