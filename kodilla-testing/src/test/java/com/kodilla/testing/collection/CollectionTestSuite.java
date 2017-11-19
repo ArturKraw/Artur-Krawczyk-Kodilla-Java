@@ -64,9 +64,9 @@ public class CollectionTestSuite {
 
         int sizeNumbers = 5;
 
-        ArrayList<Integer> numbers = new ArrayList<Integer>(sizeNumbers); //main array
-        ArrayList<Integer> evenNumbers = new ArrayList<Integer>(sizeNumbers); //result of program (exterminate)
-        ArrayList<Integer> subNumbers = new ArrayList<Integer>(sizeNumbers); //check array
+        ArrayList<Integer> numbers = new ArrayList<>(sizeNumbers); //main array
+        ArrayList<Integer> evenNumbers = new ArrayList<>(sizeNumbers); //result of program (exterminate)
+        ArrayList<Integer> subNumbers = new ArrayList<>(sizeNumbers); //check array
 
         //Given
         System.out.println("List nr 1t: numbers in test");
@@ -101,7 +101,7 @@ public class CollectionTestSuite {
 
         OddNumbersExterminator oddNumbExt = new OddNumbersExterminator();
 
-            oddNumbExt.exterminate(numbers);
+        oddNumbExt.exterminate(numbers);
 
 
         //When

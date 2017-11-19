@@ -1,7 +1,6 @@
 package com.kodilla.testing.forum;
 
 import org.junit.*;
-import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl;
 
 @Ignore
     public class ForumTestSuite {

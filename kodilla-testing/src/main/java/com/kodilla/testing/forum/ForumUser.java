@@ -1,5 +1,7 @@
 package com.kodilla.testing.forum;
 
+import com.kodilla.testing.forum.ForumComment;
+import com.kodilla.testing.forum.ForumPost;
 import org.junit.Ignore;
 
 import java.util.ArrayList;
@@ -45,7 +47,7 @@ import java.util.LinkedList;
     }
 
     public boolean removePost(ForumPost thePost) {
-        // return temporarrily
+        // return temporarily
         return true;
     }
 
