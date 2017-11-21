@@ -2,6 +2,8 @@ package com.kodilla.testing.collection;
 
 import java.util.ArrayList;
 
+
+
 public class OddNumbersExterminator {
     private ArrayList<Integer> exterminate = new ArrayList<Integer>();
     private ArrayList<Integer> array = new ArrayList<Integer>();
