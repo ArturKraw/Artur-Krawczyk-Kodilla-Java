@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.lang.InterruptedException;
 
 
+@SuppressWarnings("deprecation")
 class Calculator {
 
     Scanner sc = new Scanner( System.in );

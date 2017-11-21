@@ -1,6 +1,7 @@
 package com.kodilla.testing.forum;
 
-import com.sun.org.apache.xpath.internal.operations.String;
+import java.lang.String;
+
 
 public class ForumComment {
     ForumPost forumPost;
@@ -36,6 +37,8 @@ public class ForumComment {
         if (!commentBody.equals(that.commentBody)) return false;
         return author.equals(that.author);
     }
+
+
 
     @Override
     public int hashCode() {

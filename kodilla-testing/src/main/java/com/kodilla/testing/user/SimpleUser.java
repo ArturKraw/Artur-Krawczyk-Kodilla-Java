@@ -1,5 +1,6 @@
 package com.kodilla.testing.user;
 
+@SuppressWarnings("deprecation")
 public class SimpleUser {
     String realname;
     String username;
