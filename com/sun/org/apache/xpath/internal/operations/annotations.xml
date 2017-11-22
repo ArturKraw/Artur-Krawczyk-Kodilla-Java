@@ -1,0 +1,5 @@
+<root>
+    <item name='com.sun.org.apache.xpath.internal.operations.String'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>
