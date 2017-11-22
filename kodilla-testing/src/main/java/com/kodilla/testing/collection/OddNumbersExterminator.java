@@ -18,6 +18,7 @@ public class OddNumbersExterminator {
         }
     }
 
+
     public int getSizeArray2 () {
         return array2.size();
     }

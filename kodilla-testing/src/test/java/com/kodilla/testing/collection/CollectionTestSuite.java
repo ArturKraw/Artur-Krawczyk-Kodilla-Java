@@ -19,6 +19,7 @@ public class CollectionTestSuite {
         return numbers;
     }
 
+
     public int getNumbersSize () {
         return numbersSize;
     }
