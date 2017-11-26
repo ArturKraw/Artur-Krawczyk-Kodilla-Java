@@ -2,12 +2,14 @@ package com.kodilla.testing.forum;
 
 import com.kodilla.testing.forum.ForumComment;
 import com.kodilla.testing.forum.ForumPost;
-import org.junit.Ignore;
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-@Ignore public class ForumUser {
+@Ignore
+    public class ForumUser {
     private String name;
     private String realName;
     private ArrayList<ForumPost> posts = new ArrayList<ForumPost>();
