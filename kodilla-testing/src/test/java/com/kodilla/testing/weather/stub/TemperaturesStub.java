@@ -14,6 +14,6 @@ public class TemperaturesStub implements Temperatures{
         stubResult.put(3, 25.2);
         stubResult.put(4, 26.1);
 
-    result stubResult;
+    return stubResult;
     }
 }
