@@ -6,25 +6,64 @@ import java.util.List;
 import java.util.Map;
 
 public class StatisticsCounter implements Statistics {
-    Statistics statistics;
 
-    public int postsCount, commentsCount;
-    public ArrayList<String> usersNames;
+
+    private int postsCount;
+    private int commentsCount;
+    private List<String> usersNames;
     public int usersQuantity = 3;
 
 
     public StatisticsCounter (Statistics statistics) {
-        this.statistics=statistics;
+        this.statistics = statistics;
+    }
+
+    //Statistics < ArrayList<String> usersNames, int postsCount, int commentsCount> statistics;
+    Statistics statistics = new Statistics<ArrayList<String> usersNames, Integer postsCount, Integer commentsCount>();
+
+    @Override
+    public List<String> usersNames () {
+        return new ArrayList<String>(usersNames);
+    }
+
+    @Override
+    public int postsCount () {
+        return Integer.valueOf(postsCount);
+    }
+
+    @Override
+    public Integer commentsCount () {
+        return Integer.valueOf(commentsCount);
+    }
+
+    //Statistics statistics = new Statistics<ArrayList<String> usersNames, Integer postsCount1, Integer commentsCount>();
+
+}
+    public HashMap<Integer, Double> calculateAdvStatistics() {
+        HashMap<Integer, Double> resultMap = new HashMap<Integer, Double>();
+
+        for (Map.Entry<Integer, Double> statistics:
+                statistics.getStatistics().entrySet()) {
+
+            // adding 1 celsius degree to current value
+            // as a temporary weather forecast
+
+            resultMap.put(statistics.getKey(), statistics.getValue()+1);
+        }
+        return resultMap;
+    }
+
 
         //this.postsCount = postsCount;
         //this.commentsCount = commentsCount;
         //this.usersNames = usersNames;
 
-
+/*
     Statistics<ArrayList<String>, ArrayList<int, int>> statistics = new Statistics<<List<String>, ArayList<int, int>> () {
         @Override
-        public List<String> usersNames () {
-            return null;
+        public List<String> getUsersNames() {
+
+            return usersNames;
         }
 
         @Override
@@ -37,12 +76,12 @@ public class StatisticsCounter implements Statistics {
             return 0;
         }
     }
-
+*/
         //
         // Integer.valueof(R.drawable.bg1)
 
            // public ArrayList<Integer, Double, Double> statistics() {
-
+/*
             List<String> users = new ArrayList<String>();
             List<Integer, Integer> countData = new ArrayList<Integer, Integer>();
 
@@ -62,7 +101,7 @@ public class StatisticsCounter implements Statistics {
             return resultMap;
         }
 
-
+*/
 
     }
 
