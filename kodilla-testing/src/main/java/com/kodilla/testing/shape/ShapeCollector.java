@@ -23,7 +23,7 @@ public class ShapeCollector {
         // }else{
        shapeCollector.add(shapeA);
         //}
-        System.out.println("Nr of shapes in collection after added one shape in addFigure = " + shapeCollector.size());
+        //System.out.println("Nr of shapes in collection after added one shape in addFigure = " + shapeCollector.size());
         return shapeCollector;
     }
 
@@ -35,32 +35,28 @@ public class ShapeCollector {
         //Shape resultRemoving;
         int initsize = shapeCollector.size();
 
-        System.out.println("Collection of " + initsize + " figures");
-
         if (shapeCollector.isEmpty()){
-            System.out.println("Empty collection !" + shapeCollector.size());
+            System.out.println("Empty collection !" + shapeCollector.size() + "  Not possible to remove something!");
             resultRemoving = null;
         } else {
             if (shapeCollector.contains(shapeB)){
                 shapeCollector.remove(shapeB);
                 endsize = shapeCollector.size();
-                System.out.println("initsize: " + initsize + " endsize: " +  endsize);
+
                 if (initsize == 1 + endsize ) {
                     resultRemoving = shapeB;
-                    System.out.println("1Shape: " + resultRemoving + " found and removed from this collection (size: " + endsize +")");
+                    System.out.println("Shape: " + resultRemoving + " found and removed from this collection (size: " + endsize +")");
                     return resultRemoving;
                 } else {
-                System.out.println("2Shape: " + shapeB + " found but probably not removed from this collection.");
+                System.out.println("Shape: " + shapeB + " found but probably not removed from this collection.");
                 resultRemoving = null;
                 }
             } else {
-                System.out.println("3Shape: " + shapeB + " not found in this collection. Impossible to remove it.");
+                System.out.println("Shape: " + shapeB + " not found in this collection. Impossible to remove it.");
                 resultRemoving = null;
             }
-            System.out.println("4Shape: " + resultRemoving + " found and removed from this collection (size: " + endsize + ")");
-
         }
-        System.out.println("5Shape: " + resultRemoving + " found and removed from this collection (size: " + endsize +")");
+        System.out.println("Collection size (initial: " + initsize + " , end: " +  endsize + ")");
         return resultRemoving;
     }
 
@@ -70,17 +66,15 @@ public class ShapeCollector {
     }
 
     public Shape getFigure(int n){
-        this.n=n;
+        //this.n=n;
         shapeCollector.get(n);
         return shapeCollector.get(n);
     }
 
     public int showFigures(){
         System.out.println("List of shapes: " );
-        Integer shapesNr = shapeCollector.size();
-        System.out.println(shapesNr + " shapes in collection");
         int i;
-        for (i=0; i< shapesNr; i++) {
+        for (i=0; i< shapeCollector.size(); i++) {
             System.out.println("Shape nr " + i + ": " + shapeCollector.get(i));
         }
         return i;

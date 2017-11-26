@@ -30,13 +30,9 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(shape5);
         shapeCollector.addFigure(shape6);
 
-        //shapeCollector.showFigures();
         return shapeCollector;
     }
 
-    //public ShapeCollector getShapeCollector () {
-    //    return shapeCollector;
-    //}
 
     @BeforeClass
         public static void beforeAllTests () {
@@ -51,97 +47,71 @@ public class ShapeCollectorTestSuite {
         @Before
         public void beforeEveryTest () {
             testCounter++;
-            System.out.println("Preparing to execute test #" + testCounter);
+            System.out.println("\n" + "Preparing to execute test #" + testCounter);
         }
-
 
         @Test
         public void testAddFigure () {
             //Given
             ShapeCollector shapeCollector = new  ShapeCollector();
-            prepareShapeCollector();
-            shapeCollector;
-            shapeCollector.showFigures();
-            System.out.println("Nr of shapes before adding a shape in testAddFigure = " + shapeCollector.getSizeA());
+            shapeCollector = prepareShapeCollector();
+            System.out.println("Nr of shapes in testAddFigure = " + shapeCollector.getSizeA());
             Shape thisShape1 = (Shape) new Circle(6.0);
-            Shape thisShape2 = (Shape) new Square(4.0);
-            Shape thisShape3 = (Shape) new Triangle(3.0, 5.0);
-           //When
+            //When
             shapeCollector.addFigure(thisShape1);
-            shapeCollector.addFigure(thisShape2);
-            shapeCollector.addFigure(thisShape3);
-            shapeCollector.showFigures();
             //Then
-            System.out.println("Nr of test shapes after adding some shape in this test = " + shapeCollector.getSizeA()+ "\n");
-            Assert.assertEquals( 3 , shapeCollector.getSizeA() );
+            System.out.println("Nr of shapes after adding one shape in this test = " + shapeCollector.getSizeA());
+            Assert.assertEquals( 7 , shapeCollector.getSizeA() );
         }
-
 
         @Test
         public void testRemoveFigure() {
             //Given
             ShapeCollector shapeCollector = new  ShapeCollector();
-            //prepareShapeCollector();
-            shapeCollector.showFigures();
-            System.out.println("Nr of shapes before adding a shape in testRemoveFigure = " + shapeCollector.getSizeA());
-            Shape thisShape1 = (Shape) new Circle(6.0);
-            Shape thisShape2 = (Shape) new Square(4.0);
-            Shape thisShape3 = (Shape) new Triangle(3.0, 5.0);
+            shapeCollector = prepareShapeCollector();
+            System.out.println("Nr of shapes in testRemoveFigure = " + shapeCollector.getSizeA());
+            Shape thisShape1 = (Shape) new Circle(5.0);
+
             //When
-            shapeCollector.addFigure(thisShape1);
-            shapeCollector.addFigure(thisShape2);
-            shapeCollector.addFigure(thisShape3);
-            shapeCollector.showFigures();
-            //Then
-            System.out.println("Nr of shapes after adding some shapes in this test = " + shapeCollector.getSizeA()+ "\n");
-            shapeCollector.showFigures();
             Shape resultRemoving = null;
-            Shape selectedFigure = thisShape2;
-            System.out.println("Shapes to remove: " + selectedFigure);
-            shapeCollector.removeFigure(thisShape2);
-            System.out.println("Nr of shapes after adding some shapes in this test = " + shapeCollector.getSizeA()+ "\n");
-            shapeCollector.showFigures();
-            Assert.assertEquals(thisShape2 , shapeCollector.getResultRemoving());
+            Shape selectedFigure = thisShape1;
+            System.out.println("Shapes to be removed: " + selectedFigure);
+            shapeCollector.removeFigure(thisShape1);
+
+            //Then
+            Assert.assertEquals(thisShape1 , shapeCollector.getResultRemoving());
         }
 
         @Test
         public void testGetFigure() {
             //Given
             ShapeCollector shapeCollector = new  ShapeCollector();
-            prepareShapeCollector();
-            shapeCollector.showFigures();
-            System.out.println("Nr of shapes before adding a shape in testGetFigure = " + shapeCollector.getSizeA());
-            Shape thisShape6 = (Shape) new Circle(4.0);
-            Shape thisShape7 = (Shape) new Square(2.0);
-            Shape thisShape8 = (Shape) new Triangle(2.0, 4.0);
-            //When
-            shapeCollector.addFigure(thisShape6);
-            shapeCollector.addFigure(thisShape7);
-            shapeCollector.addFigure(thisShape8);
-            shapeCollector.showFigures();
-            //Then
-            System.out.println("Nr of shapes after adding some shapes in this test = " + shapeCollector.getSizeA()+ "\n");
+            shapeCollector = prepareShapeCollector();
+            //shapeCollector.showFigures();
+            System.out.println("Nr of shapes in testGetFigure = " + shapeCollector.getSizeA());
 
-            Assert.assertEquals( thisShape8 , shapeCollector.getFigure(2) );
+            //When
+            Shape thisShape = (Shape) new Square(5.0);
+
+            //Then
+            System.out.println("Shape to be selected = " + thisShape);
+            System.out.println("Shape selected = " + shapeCollector.getFigure(1));
+            Assert.assertEquals( thisShape , shapeCollector.getFigure(1) );
         }
+
 
         @Test
         public void testShowFigures() {
             //Given
             ShapeCollector shapeCollector = new  ShapeCollector();
-            //prepareShapeCollector();
-            shapeCollector.showFigures();
-            System.out.println("Nr of shapes before adding a shape in testShowFigures = " + shapeCollector.getSizeA());
-            Shape thisShape4 = (Shape) new Circle(8.0);
-            Shape thisShape5 = (Shape) new Square(5.0);
+            shapeCollector = prepareShapeCollector();
+            System.out.println("Nr of shapes in testShowFigures = " + shapeCollector.getSizeA());
+
             //When
-            shapeCollector.addFigure(thisShape4);
-            shapeCollector.addFigure(thisShape5);
             int b = shapeCollector.showFigures();
-            System.out.println("Nr of shapes after adding some shapes in this test = " + shapeCollector.getSizeA()+ "\n");
-            int collectorSize = shapeCollector.getSizeA();
+
             //Then
-            Assert.assertEquals(2, b);
+            Assert.assertEquals(6, b);
         }
 
 
