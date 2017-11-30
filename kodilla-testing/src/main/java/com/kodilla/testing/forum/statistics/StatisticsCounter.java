@@ -1,147 +1,65 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class StatisticsCounter implements Statistics {
+import static jdk.nashorn.internal.objects.NativeMath.round;
 
 
+public class StatisticsCounter {
+    private List<String> users;
     private int postsCount;
     private int commentsCount;
-    private List<String> usersNames;
-    public int usersQuantity = 3;
+    private int quantityOfUsers;
+    private double averageCommentsPerUser;
+    private double averagePostsPerUser;
+    private double averageCommentsPerPosts;
 
-
-    public StatisticsCounter (Statistics statistics) {
-        this.statistics = statistics;
+    public int getPostsCount () {
+        return postsCount;
     }
 
-    //Statistics < ArrayList<String> usersNames, int postsCount, int commentsCount> statistics;
-    Statistics statistics = new Statistics<ArrayList<String> usersNames, Integer postsCount, Integer commentsCount>();
-
-    @Override
-    public List<String> usersNames () {
-        return new ArrayList<String>(usersNames);
+    public List<String> getUsersNames () {
+        return users;
+    }
+    public int getCommentsCount () {
+        return commentsCount;
+    }
+    public int getQuantityOfUsers () {
+        return quantityOfUsers;
     }
 
-    @Override
-    public int postsCount () {
-        return Integer.valueOf(postsCount);
+
+    public void calculateAdvStatistics (Statistics statistics) {
+        postsCount = statistics.postsCount();
+        commentsCount = statistics.commentsCount();
+        users = statistics.usersNames();
+
+        quantityOfUsers = users.size();
+        if ((quantityOfUsers != 0) && (postsCount != 0.0)) {
+            double commentsCount1 = (double) commentsCount;
+            double quantityOfUsers1 = (double) quantityOfUsers;
+            double postsCount1 = (double) postsCount;
+            averageCommentsPerUser = commentsCount1 / quantityOfUsers1;
+            averagePostsPerUser = postsCount1 / quantityOfUsers1;
+            averageCommentsPerPosts = commentsCount1 / postsCount1;
+        }
     }
 
-    @Override
-    public Integer commentsCount () {
-        return Integer.valueOf(commentsCount);
+    public void showStatistics () {
+          System.out.println("Entry data: ");
+          System.out.print("List of users: users" + "   ");
+          System.out.print("Posts: " + postsCount + "   ");
+          System.out.println("Comments: " + commentsCount);
+          System.out.println("Statistics data: ");
+          System.out.println("Quantity of users: " + quantityOfUsers);
+          System.out.print("Posts/User: ");
+          System.out.printf("%.2f%n", averagePostsPerUser);
+          System.out.print("Comments/User: ");
+          System.out.printf("%.2f%n", averageCommentsPerUser);
+          System.out.print("Comments/Post: ");
+          System.out.printf("%.2f%n", averageCommentsPerPosts);
     }
-
-    //Statistics statistics = new Statistics<ArrayList<String> usersNames, Integer postsCount1, Integer commentsCount>();
-
 }
-    public HashMap<Integer, Double> calculateAdvStatistics() {
-        HashMap<Integer, Double> resultMap = new HashMap<Integer, Double>();
-
-        for (Map.Entry<Integer, Double> statistics:
-                statistics.getStatistics().entrySet()) {
-
-            // adding 1 celsius degree to current value
-            // as a temporary weather forecast
-
-            resultMap.put(statistics.getKey(), statistics.getValue()+1);
-        }
-        return resultMap;
-    }
-
-
-        //this.postsCount = postsCount;
-        //this.commentsCount = commentsCount;
-        //this.usersNames = usersNames;
-
-/*
-    Statistics<ArrayList<String>, ArrayList<int, int>> statistics = new Statistics<<List<String>, ArayList<int, int>> () {
-        @Override
-        public List<String> getUsersNames() {
-
-            return usersNames;
-        }
-
-        @Override
-        public int postsCount () {
-            return 0;
-        }
-
-        @Override
-        public int commentsCount () {
-            return 0;
-        }
-    }
-*/
-        //
-        // Integer.valueof(R.drawable.bg1)
-
-           // public ArrayList<Integer, Double, Double> statistics() {
-/*
-            List<String> users = new ArrayList<String>();
-            List<Integer, Integer> countData = new ArrayList<Integer, Integer>();
-
-            for (Map.Entry<Integer, ArrayList<Integer, Integer > statistics:
-                    statistics.getStatistics().entrySet()) {
-
-                public HashMap<Integer, Double> calculateForecast() {
-                    HashMap<Integer, Double> resultMap = new HashMap<Integer, Double>();
-
-                    for (Map.Entry<Integer, Double> temperature:
-                            temperatures.getTemperatures().entrySet()) {
-                // adding 1 celsius degree to current value
-                // as a temporary weather forecast
-
-                resultMap.put(statistics.getKey(), statistics.getValue());
-            }
-            return resultMap;
-        }
-
-*/
-
-    }
-
-
-        //oblicza podane powyżej wartości i zapamięta je we właściwościach (polach) klasy.
-
-        int quantityOfUsers = usersNames.size();
-
-        int quantityOfPosts = getPostsCount();
-
-        int quantityOfComments = getCommentsCount();
-
-        double averageNrOfPostsPerUser = quantityOfPosts / quantityOfUsers;
-
-        double averageNrOfCommentsPerUser = quantityOfComments / quantityOfUsers;
-
-        double averageNrOfCommentsPerPost = quantityOfComments / quantityOfPosts;
-
-        //klasa oblicza nst. statystyki:
-        //   Ilość użytkowników
-        //   Ilość postów
-        //  Ilość komentarzy
-        //   Średnia ilość postów na użytkownika
-        //  Średnia ilość komentarzy na użytkownika
-        //  Średnia ilość komentarzy na post
-
-
-
-        return statistics;
-    }
-
-    public ShowStatistics () {
-        // wyświetla zapamiętane we właściwościach statystyki.
-
-        return statistics;
-    }
-
-}
-
-
 
 
 
