@@ -27,7 +27,9 @@ public class StatisticsCounter {
     public int getQuantityOfUsers () {
         return quantityOfUsers;
     }
-
+    public double getAverageComPerUsers () { return    averageCommentsPerUser; }
+    public double getAveragePostsPerUsers () { return    averagePostsPerUser; }
+    public double getAverageComPerPosts () { return    averageCommentsPerPosts; }
 
     public void calculateAdvStatistics (Statistics statistics) {
         postsCount = statistics.postsCount();
