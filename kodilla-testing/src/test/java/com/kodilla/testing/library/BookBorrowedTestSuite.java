@@ -44,17 +44,21 @@ public List <Book> listBooksInHandsOf (LibraryUser libraryUser) {
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         LibraryUser libraryUser = new LibraryUser(libraryDatabaseMock);
 
-        LibraryUser libraryUser1 = new LibraryUser("John", "Shmidt", "991021");
+        //LibraryUser libraryUser1 = new LibraryUser("John", "Shmidt", "991021");
         List<Book> listBooksThisUser = new ArrayList<Book>();
 
         //HashMap<LibraryUser libraryUser, ArrayList<Book> listBooksThisUser) usersBorrowedBooks = new HashMap<>();
 
-        List<Book> resultListOfBooks = new ArrayList<Book>();
-        Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
-        Book book2 = new Book("Secretaries and Directors", "Dilbert Michigan", 2012);
-        Book book3 = new Book("Secret life of programmers", "Steve Wolkowitz", 2016);
-        Book book4 = new Book("Secrets of Java", "Ian Tenewitch", 2010);
-        resultListOfBooks.add(book1);
+        List<Book> ListBoocksThisUser = new ArrayList<Book>();
+        Book book1 = new Book("Title1", "John RobertsonSmith", 2008);
+        Book book2 = new Book("Title2", "Dilbert Michigan", 2010);
+        Book book3 = new Book("Title3", "Steve Wozinak", 2016);
+        Book book4 = new Book("Title4", "Ian Tenewitch", 2010);
+        Book book5 = new Book("Title5", "Steve Wozinak", 204);
+        Book book6 = new Book("Title6", "Ian Tenewitch", 206);
+
+
+        ListBoocksThisUser.add(book1); /;resultbook
         resultListOfBooks.add(book2);
         resultListOfBooks.add(book3);
         resultListOfBooks.add(book4);
@@ -65,6 +69,7 @@ public List <Book> listBooksInHandsOf (LibraryUser libraryUser) {
         List<Book> theListOfBooks = bookLibrary.listBooksWithCondition("Secret");
 
         // Then
+        lis]
         assertEquals(0, theListOfBooks.size());
     }
 
