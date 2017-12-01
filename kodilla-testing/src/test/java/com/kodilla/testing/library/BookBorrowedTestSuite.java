@@ -43,25 +43,30 @@ public List <Book> listBooksInHandsOf (LibraryUser libraryUser) {
 
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         LibraryUser libraryUser = new LibraryUser(libraryDatabaseMock);
+        LibraryUser libraryUser1 = new LibraryUser("John", "Shmidt", "991021");
 
-        //LibraryUser libraryUser1 = new LibraryUser("John", "Shmidt", "991021");
         List<Book> listBooksThisUser = new ArrayList<Book>();
+        List<Book> resultListOf0Books = new ArrayList<Book>();
+        HashMap<LibraryUser, ArrayList<Book>> usersBorrowedBooks = new HashMap<LibraryUser, ArrayList<Book>>();
 
-        //HashMap<LibraryUser libraryUser, ArrayList<Book> listBooksThisUser) usersBorrowedBooks = new HashMap<>();
+
+
+        HashMap<LibraryUser, ArrayList<Book>> users1BorrowedBooks = ;
+
+        usersBorrowedBooks.add(libraryUser1, resultListOf0Books);
 
         List<Book> ListBoocksThisUser = new ArrayList<Book>();
-        Book book1 = new Book("Title1", "John RobertsonSmith", 2008);
-        Book book2 = new Book("Title2", "Dilbert Michigan", 2010);
-        Book book3 = new Book("Title3", "Steve Wozinak", 2016);
-        Book book4 = new Book("Title4", "Ian Tenewitch", 2010);
-        Book book5 = new Book("Title5", "Steve Wozinak", 204);
-        Book book6 = new Book("Title6", "Ian Tenewitch", 206);
 
 
-        ListBoocksThisUser.add(book1); /;resultbook
-        resultListOfBooks.add(book2);
-        resultListOfBooks.add(book3);
-        resultListOfBooks.add(book4);
+
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+
+
+        List<Book> resultListOf1Books = generateListOfNBooks(1);
+        List<Book> resultListOf5Books = generateListOfNBooks(5);
+
+
+
         when(libraryDatabaseMock.listBooksWithCondition("Secret"))
                 .thenReturn(resultListOfBooks);
 
@@ -69,7 +74,7 @@ public List <Book> listBooksInHandsOf (LibraryUser libraryUser) {
         List<Book> theListOfBooks = bookLibrary.listBooksWithCondition("Secret");
 
         // Then
-        lis]
+        lis
         assertEquals(0, theListOfBooks.size());
     }
 
