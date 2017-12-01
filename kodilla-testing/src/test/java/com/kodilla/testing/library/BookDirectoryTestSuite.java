@@ -23,15 +23,12 @@ public class BookDirectoryTestSuite {
         return resultList;
     }
 
-
     @Test
     public void testListBooksWithConditionsReturnList () {
 // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-
         List<Book> resultListOfBooks = new ArrayList<Book>();
-
         Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
         Book book2 = new Book("Secretaries and Directors", "Dilbert Michigan", 2012);
         Book book3 = new Book("Secret life of programmers", "Steve Wolkowitz", 2016);
@@ -40,6 +37,7 @@ public class BookDirectoryTestSuite {
         resultListOfBooks.add(book2);
         resultListOfBooks.add(book3);
         resultListOfBooks.add(book4);
+
         when(libraryDatabaseMock.listBooksWithCondition("Secret"))
                 .thenReturn(resultListOfBooks);
 
@@ -69,7 +67,6 @@ public class BookDirectoryTestSuite {
     List<Book> theListOfBooks15 = bookLibrary.listBooksWithCondition("Any title");
     List<Book> theListOfBooks40 = bookLibrary.listBooksWithCondition("FourtyBooks");
     // Then
-
     assertEquals (0,theListOfBooks0.size());
     assertEquals (15,theListOfBooks15.size());
     assertEquals (0,theListOfBooks40.size());

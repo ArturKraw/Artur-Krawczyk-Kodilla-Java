@@ -5,7 +5,6 @@ import java.util.List;
 
 public class BookLibrary {
     LibraryDatabase libraryDatabase;
-
     public BookLibrary (LibraryDatabase libraryDatabase) {
         this.libraryDatabase = libraryDatabase;
     }
@@ -21,20 +20,15 @@ public class BookLibrary {
         return bookList;
     }
     //List<Book> listBooksInHandsOf(LibraryUser libraryUser);
+
     public List <Book> listBooksInHandsOf (LibraryUser libraryUser) {
 
-        List<Book> bookListBorrowedUser1 = new ArrayList<Book>();
-        Book book = new Book("The book1 title", "The book1 author", 2001);
-        bookListBorrowedUser1.add(book);
+       List<Book> resultList2 = new ArrayList<Book>();
 
+        resultList2 = libraryDatabase.listBooksInHandsOf(libraryUser);
+        System.out.println("\n" + "LibrayUser: " + libraryUser);
+        System.out.println("ResultList2: " + resultList2);
 
-/*
-        if (titleFragment.length() < 3) return bookList;
-        List<Book> resultList = libraryDatabase.listBooksWithCondition(titleFragment);
-        if (resultList.size() > 20) return bookList;
-        bookList = resultList;
-*/
-        return bookListBorrowedUser1;
+    return resultList2;
     }
-
 }
