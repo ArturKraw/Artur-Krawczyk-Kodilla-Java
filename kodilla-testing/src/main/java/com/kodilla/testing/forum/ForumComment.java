@@ -1,6 +1,5 @@
 package com.kodilla.testing.forum;
 
-import com.sun.org.apache.xpath.internal.operations.String;
 
 public class ForumComment {
     ForumPost forumPost;
