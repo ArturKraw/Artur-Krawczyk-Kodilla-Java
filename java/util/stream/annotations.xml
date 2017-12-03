@@ -1,0 +1,5 @@
+<root>
+    <item name='java.util.stream.Collectors java.util.stream.Collector&lt;T,?,java.util.Map&lt;K,U&gt;&gt; toMap(java.util.function.Function&lt;? super T,? extends K&gt;, java.util.function.Function&lt;? super T,? extends U&gt;)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+</root>
