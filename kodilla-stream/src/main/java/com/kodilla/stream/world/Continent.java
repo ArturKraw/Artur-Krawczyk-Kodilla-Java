@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 //List<Country> countryList
 
 public abstract class Continent {
-    String continentName;
-    List<Country> continentCountryList;
+    protected String continentName;
+    protected List<Country> continentCountryList;
 
 
-    public String getContinentName () {
+    final String getContinentName () {
         return continentName;
     }
 

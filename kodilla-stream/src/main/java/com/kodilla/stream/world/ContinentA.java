@@ -7,7 +7,7 @@ import java.util.*;
 
     public final class ContinentA extends Continent{ //extends World{
         public ContinentA () {
-            continentName = "ContinentA";
+            final String continentName = "ContinentA";
             continentCountryList = Arrays.asList(
                     new Country("Country1", new BigDecimal("100000000"), "ContinentA"),
                     new Country("Country4", new BigDecimal("120000000"), "ContinentA"),
