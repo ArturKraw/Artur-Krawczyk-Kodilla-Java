@@ -8,9 +8,13 @@ import java.util.stream.Collectors;
 //List<Country> countryList
 
 public abstract class Continent {
-    protected String continentName;
+    protected String continentName ;
     protected List<Country> continentCountryList;
 
+    public Continent (String continentName, List<Country> continentCountryList) {
+        this.continentName = continentName;
+        this.continentCountryList = continentCountryList;
+    }
 
     final String getContinentName () {
         return continentName;
