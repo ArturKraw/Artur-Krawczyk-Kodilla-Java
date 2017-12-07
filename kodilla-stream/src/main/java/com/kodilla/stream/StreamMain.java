@@ -1,25 +1,70 @@
 package com.kodilla.stream;
 
 
-import com.kodilla.stream.lambda.ExpressionExecutor;
-import com.kodilla.stream.reference.FunctionalCalculator;
+import com.kodilla.stream.world.*;
+
+import java.math.BigDecimal;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class StreamMain {
-    public static void main(String[] args) {
-        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
 
-        System.out.println("Calculating expressions with lambdas");
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a + b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a - b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a * b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a / b);
+    public static void main (String[] args) {
 
-        System.out.println("Calculating expressions with method references");
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::subBFromA);
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::divideAByB);
+        ContinentA continentA = new ContinentA();
+        ContinentB continentB = new ContinentB();
+        ContinentC continentC = new ContinentC();
+
+        BigDecimal result1 = continentA.getContinentCountryList().stream()
+                .map(Country::getPeopleQuantity)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        System.out.println("\n" + "ContinentA.Population: " +  result1);
+
+        BigDecimal result2 = continentB.getContinentCountryList().stream()
+                .map(Country::getPeopleQuantity)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        System.out.println("\n" + "ContinentB.Population  " + result2);
+
+        BigDecimal result3 = continentC.getContinentCountryList().stream()
+                .map(Country::getPeopleQuantity)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        System.out.println("\n" + "ContinentC.Population: " + result3);
+
+        BigDecimal resultSum1 = (result1).add(result2).add(result3);
+        System.out.println("\n" + "World.Population (sum of 3 continents):  " + resultSum1);
+
+        World world = new World();
+        BigDecimal result = world.getPeopleQuantity();
+        System.out.println("\n" + "World.Population (program main):  " + result);
+
+
+        System.out.println("Quantitiy of countries (world): " +
+                world.getWorldList().stream()
+                .flatMap(continent -> continent.getContinentCountryList().stream())
+                .map(Country::getName).count()
+                        );
+                //
+                //.reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        System.out.println("Countries names: (world) " +
+                world.getWorldList().stream()
+                .flatMap(continent -> continent.getContinentCountryList().stream())
+                .map(Country::getName)
+                .collect(Collectors.toList())
+                    );
 
     }
-
 }
+
+
+
+
+
+
+
+
+
+
