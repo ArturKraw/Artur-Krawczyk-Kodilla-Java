@@ -1,0 +1,7 @@
+<root>
+    <item name='java.util.stream.IntStream java.util.stream.Stream&lt;java.lang.Integer&gt; boxed()'>
+        <annotation name='org.jetbrains.annotations.Contract'>
+            <val name="pure" val="true"/>
+        </annotation>
+    </item>
+</root>
