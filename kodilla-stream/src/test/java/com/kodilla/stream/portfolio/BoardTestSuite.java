@@ -170,6 +170,6 @@ public class BoardTestSuite {
         System.out.println("Average duration of all tasks (days): " + average1);
 
         //Then
-        Assert.assertEquals(10.0, 10.0, 0.001);
+        Assert.assertEquals(average1, 10.0, 0.001);
     }
 }
