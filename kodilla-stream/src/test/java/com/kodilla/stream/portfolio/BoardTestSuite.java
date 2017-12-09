@@ -129,7 +129,7 @@ public class BoardTestSuite {
         long longTasks = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .map(t -> t.getCreated())
+                .map(Task::getCreated)
                 .filter(d -> d.compareTo(LocalDate.now().minusDays(10)) <= 0)
                 .count();
 
@@ -149,7 +149,7 @@ public class BoardTestSuite {
         List<LocalDate> tasks2 = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .map(t -> t.getCreated())
+                .map(Task::getCreated)
                 .collect(toList());
                 //.filter(d -> d.compareTo(LocalDate.now().minusDays(10)) <= 0)
                 //.count();
@@ -158,13 +158,14 @@ public class BoardTestSuite {
                 List<Long> list2 = tasks2.stream()
                     .map(t -> (DAYS.between(t, LocalDate.now())))
                     .collect(toList());
-        System.out.println("Tasks in progress: " + list2.stream().count());
+        System.out.println("Tasks in progress: " + list2.size());
         System.out.println("List od duration of each task (days): " + list2);
 
         double average1 = list2.stream()
-                .map(x->x.toString())
-                .map(x->Integer.valueOf(x))
-                .mapToInt(i -> i)
+                .mapToLong(x->x)
+                //.map(x->x.toString())
+                //.map(x->Integer.valueOf(x))
+                //.mapToInt(i -> i)
                 .average()
                 .orElse(0.0);
         System.out.println("Average duration of all tasks (days): " + average1);
