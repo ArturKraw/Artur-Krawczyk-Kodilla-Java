@@ -16,6 +16,7 @@ public class FileReader {
                         //ClassLoader classLoader = getClass().getClassLoader();
                 //File file = new File(classLoader.getResource().getFile());
 
+                //try (Stream<String> fileLines = Files.lines(Paths.get("C:\\Users\\imiona"))) {
                 try (Stream<String> fileLines = Files.lines(Paths.get("C:\\Users\\imiona"))) {
                     fileLines.forEach(System.out::println);
                 } catch (IOException e) {
