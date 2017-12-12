@@ -1,7 +1,5 @@
-package com.kodilla.exception.com.kodilla.exception.test;
+package com.kodilla.exception.test;
 
-
-import java.io.IOException;
 
 public class SecondChallenge {
 

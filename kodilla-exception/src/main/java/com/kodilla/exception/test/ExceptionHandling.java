@@ -1,4 +1,4 @@
-package com.kodilla.exception.com.kodilla.exception.test;
+package com.kodilla.exception.test;
 
 
 public class ExceptionHandling {
@@ -23,6 +23,7 @@ public class ExceptionHandling {
 
         } finally {
             System.out.println("\n" + "finally section - ExceptionHandling");
+
             System.out.println("Done All!");
         }
     }
