@@ -1,7 +1,5 @@
 package com.kodilla.good.patterns.challenges;
-//Wykorzystując poznane już Streamy
-// wykonaj iterację po poniższej mapie tytułów
-// i wyświetl wszystkie tytuły w jednym ciągu separując je wykrzyknikiem:
+
 
 
 import java.util.ArrayList;
@@ -30,16 +28,10 @@ public class MovieStore {
         booksTitlesWithTranslations.put("AV", avengersTranslations);
         booksTitlesWithTranslations.put("FL", flashTranslations);
 
+
+        System.out.println("In method: " + "\n" + booksTitlesWithTranslations);
+
         return booksTitlesWithTranslations;
     }
-
-    BookDirectory theBookDirectory = new BookDirectory();
-    String theResultStringOfBooks = theBookDirectory.getList().stream()
-            .filter(book -> book.getYearOfPublication() > 2005)
-            .map(Book::toString)
-            .collect(Collectors.joining(",\n", "<<", ">>"));
-
-        System.out.println(theResultStringOfBooks);
-
 
 }
