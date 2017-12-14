@@ -1,4 +1,7 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.ProductOrderServicePack;
+
+import com.kodilla.good.patterns.challenges.ProductOrderServicePack.*;
+
 /*
 Serwis powinien zajmować się wykonywaniem zamówień różnego rodzaju produktów
         (gier, kapcie, szczoteczek do zębów… innymi słowy, Allegro :)
