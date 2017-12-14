@@ -14,6 +14,13 @@ public class OrderRequestRetriever {
 
         Product product = new Product ("LegoSet1", 1, 50.0 );
 
+
+        System.out.println("\n" + "<OrderRequestRetriever> - Start");
+        System.out.println("Summary of product order: ");
+        System.out.println(user);
+        System.out.println("Order Time: " + orderTime);
+        System.out.println(product);
+        System.out.println("<OrderRequestRetriever> - End");
             return new OrderRequest(user, orderTime, product);
 
 

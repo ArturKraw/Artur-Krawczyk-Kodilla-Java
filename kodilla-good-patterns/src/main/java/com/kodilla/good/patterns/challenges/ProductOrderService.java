@@ -10,18 +10,21 @@ public class ProductOrderService {
 
     public void productOrderService(){
 
-
+        System.out.println("\n" + "<ProductOrderService> - Start");
     OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
     OrderRequest orderRequest = orderRequestRetriever.retrieve();
 
     OrderProcessor orderProcessor = new OrderProcessor
-          (new MailInformationService(), new PrOrderService(), new PrOrderRepository());
+          (new MailInformationService(), new ProdOrderService(), new ProdOrderRepository());
 
         orderProcessor.orderProcess(orderRequest);
 
-        System.out.println("Summary of product order action: ");
+        System.out.println("\n" + "Summary of product order action: ");
         System.out.println(orderRequest.getUser());
-        System.out.println("Bye");
+        System.out.println(orderRequest.getOrderTime());
+        System.out.println(orderRequest.getProduct());
+        System.out.println("<ProductOrderService> - End");
+
 
     }
 }

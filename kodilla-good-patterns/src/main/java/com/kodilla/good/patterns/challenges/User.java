@@ -23,6 +23,15 @@ public class User {
     }
 
     @Override
+    public String toString () {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals (Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
