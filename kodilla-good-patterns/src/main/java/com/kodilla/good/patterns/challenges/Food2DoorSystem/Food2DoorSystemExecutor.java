@@ -10,8 +10,6 @@ public class Food2DoorSystemExecutor {
 
         productOrder.productOrderService();
         System.out.println("<F2D-System-Executor> - End");
-        System.out.println("BYE");
-
-
+        System.out.println("That's all, bye");
         }
     }
