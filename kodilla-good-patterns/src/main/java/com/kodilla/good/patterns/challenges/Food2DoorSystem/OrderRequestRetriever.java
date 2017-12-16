@@ -11,7 +11,7 @@ class OrderRequestRetriever {
 
         LocalDateTime orderTime = LocalDateTime.of(2017, 12, 11, 16, 15);
 
-        ProductProvider productProvider = new ProductProvider ("Shop1", "Adres1");
+        ProductProvider productProvider = new ProductProvider ("Shop3", "Adres3");
 
             Product product1 = new Product ("apple", 1.0);
             Product product2 = new Product ("waterMelon", 3.0 );

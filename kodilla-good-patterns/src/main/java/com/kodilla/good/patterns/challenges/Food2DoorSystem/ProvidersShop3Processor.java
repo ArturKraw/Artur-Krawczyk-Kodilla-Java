@@ -5,34 +5,14 @@ import java.util.HashMap;
 
 public class ProvidersShop3Processor implements ProvidersProcessor {
 
+    boolean result;
 
-    public boolean process (String orderId, User user, LocalDateTime orderTime,
-                            ProductProvider productProvider, OrderSet orderSet) {
-        boolean result, result1;
+    ProvidersShopProcessor provShopProc =  new ProvidersShopProcessor();
 
-        System.out.println("\n" + "<ProvidersShop3Processor> - Start");
+    public boolean  process (int shopNr,  String orderId, User user, LocalDateTime orderTime,
+                             ProductProvider productProvider, OrderSet orderSet){
 
-        String thisProdProvName = "Shop3";
-        if (thisProdProvName.equals(productProvider.getName())) {
-            result1 = true;
-
-                     System.out.println("Provider " +  thisProdProvName + " confirmed order " + orderId + " and started to execute it");
-        } else {
-            result1 = false;
-            System.out.println("Order " + orderId + " was faulty sent to provider " +  thisProdProvName);
-        }
-        System.out.println("result1: " + result1);
-
-        MainExecutionSystemShop3 exSysShop3 = new MainExecutionSystemShop3();
-        boolean orderValidation = exSysShop3.mainSystemOrderProcess(orderId, user, productProvider, orderSet);
-        System.out.println("orderValidation: " + orderValidation);
-
-        if (result1==true && orderValidation==true) {
-            result = true;
-        } else {
-            result = false;
-        }
-
-        return result;
+        return provShopProc.process (3 , orderId, user, orderTime, productProvider, orderSet);
     }
+
 }
