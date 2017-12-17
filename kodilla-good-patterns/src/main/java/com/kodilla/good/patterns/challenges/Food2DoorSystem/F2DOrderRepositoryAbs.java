@@ -12,9 +12,9 @@ public abstract class F2DOrderRepositoryAbs {
         return result;
     }
 
-    public abstract boolean checkRemoveOrder ();
+    //public abstract boolean checkRemoveOrder ();
 
-    public abstract void createOrder ();
+    //public abstract void createOrder ();
 
-    public abstract void removeOrder ();
+    //public abstract void removeOrder ();
 }

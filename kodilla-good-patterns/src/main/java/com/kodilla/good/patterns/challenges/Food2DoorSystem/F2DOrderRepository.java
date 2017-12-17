@@ -2,7 +2,7 @@ package com.kodilla.good.patterns.challenges.Food2DoorSystem;
 
 import java.time.LocalDateTime;
 
-public class F2DOrderRepository {
+public class F2DOrderRepository extends F2DOrderRepositoryAbs {
 
     public boolean createOrder(String orderId, User user, ProductProvider productProvider, LocalDateTime orderTime, OrderSet orderSet){
         System.out.println("\n" + "<ProdOrderRepository> - Start");

@@ -3,7 +3,7 @@ package com.kodilla.good.patterns.challenges.Food2DoorSystem;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 
-public class ProvidersShop3Processor implements ProvidersProcessor {
+public class ProvidersShop3Processor  implements ProvidersProcessor {
 
     boolean result;
 
