@@ -14,36 +14,40 @@ import java.util.List;
 @Configuration
 public class BoardConfig {
     @Autowired
-    @Qualifier(value = "list1")
-    private TaskList taskList, toDoList, inProgressList, doneList;
+    @Qualifier(value = "toDoList")
+    private TaskList toDoList;
+
+    @Autowired
+    @Qualifier(value = "inProgressList")
+    private TaskList inProgressList;
+
+    @Autowired
+    @Qualifier(value = "doneList")
+    private TaskList doneList;
 
     @Bean
     public Board getBoard(){
-        return new Board(taskList);
+        return new Board(toDoList, inProgressList, doneList);
     }
 
-    @Bean(name = "list1")
-    @Scope("prototype")
-    public Board getToDoList() {
-        return new Board(toDoList);
+    @Bean(name = "toDoList")
+    //@Scope("prototype")
+    public TaskList getToDoList() {
+        return new TaskList();
     }
 
-    @Bean(name = "list2")
-    @Scope("prototype")
-    public Board getInProgressList() {
-        return new Board(inProgressList);
-    }
-    @Bean(name = "list3")
-    @Scope("prototype")
-    public Board getDoneList() {
-        return new Board(doneList);
+    @Bean(name = "inProgressList")
+    //@Scope("prototype")
+    public TaskList getInProgressList() {
+        return new TaskList();
     }
 
-    @Bean(name = "taks3")
-    @Scope("prototype")
-    @Conditional(IfDayIsOddCondition.class)
-    public TaskList getTaskList() {
-        return new TaskList(list1);
+    @Bean(name = "doneList")
+    //@Scope("prototype")
+    public TaskList getDoneList() {
+        return new TaskList();
     }
+
+
 }
 

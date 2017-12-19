@@ -11,7 +11,7 @@ public class TaskList {
     private List<Task> tasks;
     private Task task;
 
-    public TaskList (List<Task> tasks) {
+    public TaskList () {
         this.tasks = new ArrayList<>();
     }
 
@@ -19,5 +19,26 @@ public class TaskList {
         tasks.add(task);
         return tasks;
     }
+    public Task getTask (int index) {
+        return tasks.get(index);
+    }
 
+
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TaskList)) return false;
+
+        TaskList taskList = (TaskList) o;
+
+        if (tasks != null ? !tasks.equals(taskList.tasks) : taskList.tasks != null) return false;
+        return task != null ? task.equals(taskList.task) : taskList.task == null;
+    }
+
+    @Override
+    public int hashCode () {
+        int result = tasks != null ? tasks.hashCode() : 0;
+        result = 31 * result + (task != null ? task.hashCode() : 0);
+        return result;
+    }
 }
