@@ -4,6 +4,6 @@ import java.time.LocalDateTime;
 
 public interface ProvidersProcessor {
 
-    boolean process(int shopNr, String orderId, User user, LocalDateTime orderTime, ProductProvider productProvider, OrderSet orderSet);
+    boolean process(String orderId, User user, LocalDateTime orderTime, ProductProvider productProvider, OrderSet orderSet);
 
 }

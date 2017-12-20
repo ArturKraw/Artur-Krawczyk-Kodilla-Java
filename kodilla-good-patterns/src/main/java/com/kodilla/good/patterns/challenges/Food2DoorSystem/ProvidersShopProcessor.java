@@ -2,23 +2,27 @@ package com.kodilla.good.patterns.challenges.Food2DoorSystem;
 
 import java.time.LocalDateTime;
 
-public class ProvidersShopProcessor implements ProvidersProcessor {
+public abstract class ProvidersShopProcessor implements ProvidersProcessor {
 
+       protected abstract MainExecutionSystem createMainExecutionSystemShop();
 
-        public boolean process (int shopNr, String orderId, User user, LocalDateTime orderTime,
+       protected abstract String getThisProdProvName();
+
+       public boolean process (String orderId, User user, LocalDateTime orderTime,
                             ProductProvider productProvider, OrderSet orderSet) {
         boolean result, result1, orderValidation;
         MainExecutionSystem exSysShop;
 
-        String text1 = "<ProvidersShop" + shopNr + "Processor> - Start";
+        String text1 = "<ProvidersShop" + "Processor> - Start";
         System.out.println("\n" + text1);
 
-        String thisProdProvName = "Shop";
-            thisProdProvName = thisProdProvName.concat(Integer.toString(shopNr));
-        System.out.println("thisProdProvName: " + thisProdProvName);
+        String thisProdProvName = getThisProdProvName();
+
+            System.out.println("thisProdProvName: " + thisProdProvName);
+
         if (thisProdProvName.equals(productProvider.getName())) {
             result1 = true;
-            System.out.println("Provider " + thisProdProvName + " confirmed order " + orderId + " and started to execute it");
+            System.out.println("Provider " + thisProdProvName + " confirmed receiving order " + orderId + " and started to execute it");
         } else {
             result1 = false;
             System.out.println();
@@ -26,19 +30,8 @@ public class ProvidersShopProcessor implements ProvidersProcessor {
         }
         System.out.println("result1: " + result1);
 
-            switch (shopNr) {
-                case 1:
-                    exSysShop = new MainExecutionSystemShop1();
-                    break;
-                case 2:
-                    exSysShop = new MainExecutionSystemShop2();
-                    break;
-                case 3:
-                    exSysShop = new MainExecutionSystemShop3();
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid productProvider name : " + "Shop" + shopNr);
-            }
+        exSysShop = createMainExecutionSystemShop();
+
 
             orderValidation = exSysShop.mainSystemOrderProcess(orderId, user, productProvider, orderSet);
 

@@ -4,6 +4,6 @@ import java.time.LocalDateTime;
 
 public interface OrderTransferToProvider {
 
-    boolean ordered(String orderId, User user,
+    boolean orderTransferOperation  (String orderId, User user,
                            LocalDateTime orderTime, ProductProvider productProvider, OrderSet orderSet);
 }
