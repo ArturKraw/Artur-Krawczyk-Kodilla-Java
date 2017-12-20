@@ -17,17 +17,25 @@ public class Board {
     public TaskList getToDoList () {
         return toDoList;
     }
-    public void addToToDoList (Task task) {
-        toDoList.addTask(task);
-    }
-
+    public void add2toDoList (Task task) {toDoList.addTask(task); }
 
     public TaskList getInProgressList () {
         return inProgressList;
     }
+    public void add2inProgressList (Task task) {inProgressList.addTask(task); }
 
     public TaskList getDoneList () {
         return doneList;
     }
+    public void add2doneList (Task task) {doneList.addTask(task); }
 
+
+    @Override
+    public String toString () {
+        return "Board{" +
+                "toDoList=" + toDoList +
+                ", inProgressList=" + inProgressList +
+                ", doneList=" + doneList +
+                '}';
+    }
 }

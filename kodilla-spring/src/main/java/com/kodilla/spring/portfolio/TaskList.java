@@ -22,7 +22,28 @@ public class TaskList {
     public Task getTask (int index) {
         return tasks.get(index);
     }
+    public int indexOfTask (Task task) {
+        return tasks.indexOf(task);
+    }
 
+    public int sizeTaksList () {
+        return tasks.size();
+    }
+    public boolean emptyTaskList(){
+        return tasks.isEmpty();
+    }
+
+
+    public boolean checkTask (Task task) {
+        return tasks.contains(task);
+    }
+
+    @Override
+    public String toString () {
+        return "TaskList{" +
+                "tasks=" + tasks +
+                '}';
+    }
 
     @Override
     public boolean equals (Object o) {
