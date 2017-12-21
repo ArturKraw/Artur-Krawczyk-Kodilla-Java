@@ -7,17 +7,16 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class LoggerTestSuite {
-    private static Logger logger;
+    //private static Logger logger;
     private static String text = "This is last log";
 
     @Test
     public void testGetLastLog() {
         //Given
-        logger = new Logger();
-        logger.log(text);
+        Logger.getInstance().log(text);
         //When
-        String textFromLogger = logger.getLastLog();
-        System.out.println("LastLog: " + text + " //text put in test " );
+        String textFromLogger = Logger.getInstance().getLastLog();
+        System.out.println("LastLog: " + text + " //LoggerTestSuite - text put in Test " );
         //Then
         Assert.assertEquals(textFromLogger, text);
     }
