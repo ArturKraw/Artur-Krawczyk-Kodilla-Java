@@ -8,7 +8,7 @@ public class F2DProductOrderService {
         OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
         OrderRequest orderRequest = orderRequestRetriever.retrieve();
 
-        ProductProvider getProductProvider;
+        //ProductProvider getProductProvider;
 
         switch (orderRequest.getProductProvider().getName()){
             case("Shop1"):
@@ -29,11 +29,12 @@ public class F2DProductOrderService {
 
         orderProcessor.orderProcessF2D (orderRequest);
 
-        System.out.println("\n" + "Summary of product order action: ");
-        System.out.println(orderRequest.getUser());
-        System.out.println(orderRequest.getOrderTime());
-        System.out.println(orderRequest.getProductProvider());
-        System.out.println(orderRequest.getOrderSet());
+        System.out.println("\n" + "Summary of product order action (MOD): ");
+        System.out.println(orderRequest);
+        //System.out.println(orderRequest.getUser());
+        //System.out.println(orderRequest.getOrderTime());
+        //System.out.println(orderRequest.getProductProvider());
+        //System.out.println(orderRequest.getOrderSet());
         System.out.println("<F2D-ProductOrderService> - End");
 
     }

@@ -39,12 +39,12 @@ public class OrderRequest {
 
     @Override
     public String toString () {
-        return "OrderRequest{" +
-                " orderId=" + orderId +
-                ", user=" + user +
-                ", orderTime=" + orderTime +
-                ", productProvider=" + productProvider +
-                ", orderSet=" + orderSet +
-                '}';
+        return "OrderRequest:" + "\n" +
+                "   OrderId: " + orderId + "\n" +
+                "   User: " +  user + "\n" +
+                "   Order time: " + orderTime + "\n" +
+                "   Product provider: " +  productProvider + "\n" +
+                "   Order set: " +   orderSet;
+
     }
 }
