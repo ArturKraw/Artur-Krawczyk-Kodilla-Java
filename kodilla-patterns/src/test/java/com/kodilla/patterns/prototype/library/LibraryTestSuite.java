@@ -28,12 +28,36 @@ public class LibraryTestSuite  {
             library.getBooks().add(book4);
             library.getBooks().add(book5);
             library.getBooks().add(book6);
-
         System.out.println(library);
 
+        //making a shallow clone of object library
+        Library clonedLibrary = null;
+        try {
+            clonedLibrary = library.shallowCopy();
+            clonedLibrary.setName("Library One - shallow copy");
+        } catch (CloneNotSupportedException e) {
+            System.out.println(e);
+        }
+        //making a deep copy of object library
+        Library deepClonedLibrary = null;
+        try {
+            deepClonedLibrary = library .deepCopy();
+            deepClonedLibrary.setName("Library One - deep copy");
+        } catch (CloneNotSupportedException e) {
+            System.out.println(e);
+        }
+
         //When
+        library.getBooks().remove(book5);
+        System.out.println(library);
+        System.out.println(clonedLibrary);
+        System.out.println(deepClonedLibrary);
         //Then
-        Assert.assertEquals(6 , library.getBooks().size());
+        Assert.assertEquals(5 , library.getBooks().size());
+        Assert.assertEquals(5 , clonedLibrary.getBooks().size());
+        Assert.assertEquals(6 , deepClonedLibrary.getBooks().size());
+        Assert.assertEquals( clonedLibrary.getBooks(), library.getBooks());
+        Assert.assertNotEquals( deepClonedLibrary.getBooks(), library.getBooks() );
 
     }
 }
