@@ -7,6 +7,6 @@ public class TwitterPublisher implements SocialPublisher {
     @Override
     public String share() {
         //System.out.println("TwitterPublisher");
-        return "[YGeneration] share on Twitter";
+        return " TwitterPublisher] and interact through Twitter";
     }
 }

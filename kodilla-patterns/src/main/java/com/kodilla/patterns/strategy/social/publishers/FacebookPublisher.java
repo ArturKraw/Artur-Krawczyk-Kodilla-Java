@@ -6,6 +6,6 @@ public class FacebookPublisher implements SocialPublisher {
     @Override
     public String share() {
         //System.out.println("FacebookPublisher");
-        return "[Millenials] share on Facebook";
+        return " FacebookPublisher] and interact through Facebook";
     }
 }

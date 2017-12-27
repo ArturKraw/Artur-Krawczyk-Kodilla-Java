@@ -6,6 +6,6 @@ public class SnapchatPublisher implements SocialPublisher {
     @Override
     public String share() {
         //System.out.println("SocialPublisher");
-        return "[ZGeneration] share on Snapchat";
+        return " SnapchatPublisher] and interact through Snapchat";
     }
 }
