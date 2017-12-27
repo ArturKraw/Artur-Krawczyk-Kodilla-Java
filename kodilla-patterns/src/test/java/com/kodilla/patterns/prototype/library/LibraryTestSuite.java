@@ -11,9 +11,8 @@ import java.util.stream.IntStream;
 public class LibraryTestSuite  {
 
     @Test
-    public void testGetBooks() {
+    public void testGetBooks() throws Exception{
         //given
-        //creating the TasksList for todos
         Book book1 = new Book("Title1", "Author1", LocalDate.of(2014,12,10));
         Book book2 = new Book("Title2", "Author2", LocalDate.of(2010,9,12));
         Book book3 = new Book("Title3", "Author3", LocalDate.of(2000,7,30));
@@ -32,20 +31,13 @@ public class LibraryTestSuite  {
 
         //making a shallow clone of object library
         Library clonedLibrary = null;
-        try {
-            clonedLibrary = library.shallowCopy();
-            clonedLibrary.setName("Library One - shallow copy");
-        } catch (CloneNotSupportedException e) {
-            System.out.println(e);
-        }
+        clonedLibrary = library.shallowCopy();
+        clonedLibrary.setName("Library One - shallow copy");
+
         //making a deep copy of object library
         Library deepClonedLibrary = null;
-        try {
-            deepClonedLibrary = library .deepCopy();
-            deepClonedLibrary.setName("Library One - deep copy");
-        } catch (CloneNotSupportedException e) {
-            System.out.println(e);
-        }
+        deepClonedLibrary = library .deepCopy();
+        deepClonedLibrary.setName("Library One - deep copy");
 
         //When
         library.getBooks().remove(book5);
