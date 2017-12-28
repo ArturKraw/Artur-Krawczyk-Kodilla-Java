@@ -39,4 +39,14 @@ public class ShoppingTask implements Task{
         return executedTask;
     }
 
+    @Override
+    public String toString () {
+        return "ShoppingTask{" +
+                "taskName='" + taskName + '\'' +
+                ", whatToBuy='" + whatToBuy + '\'' +
+                ", quantity=" + quantity +
+                ", startedTask=" + startedTask +
+                ", executedTask=" + executedTask +
+                '}';
+    }
 }

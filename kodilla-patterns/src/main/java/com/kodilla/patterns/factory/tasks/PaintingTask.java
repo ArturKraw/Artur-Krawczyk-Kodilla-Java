@@ -38,4 +38,15 @@ public class PaintingTask implements Task{
         System.out.println("PaintingTask: " + taskName + " is executed: " + executedTask);
         return executedTask;
     }
+
+    @Override
+    public String toString () {
+        return "PaintingTask{" +
+                "taskName='" + taskName + '\'' +
+                ", color='" + color + '\'' +
+                ", whatToPaint='" + whatToPaint + '\'' +
+                ", startedTask=" + startedTask +
+                ", executedTask=" + executedTask +
+                '}';
+    }
 }
