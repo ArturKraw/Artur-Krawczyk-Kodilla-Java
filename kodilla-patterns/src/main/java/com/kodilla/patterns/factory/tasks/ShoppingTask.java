@@ -4,8 +4,8 @@ public class ShoppingTask implements Task{
     final String taskName;
     final String whatToBuy;
     final double quantity;
-    String executedTask;
-    boolean isTaskExecuted;
+    boolean startedTask;
+    boolean executedTask;
 
     public ShoppingTask (String taskName, String whatToBuy, double quantity) {
         this.taskName = taskName;
@@ -24,20 +24,19 @@ public class ShoppingTask implements Task{
     public double getQuantity () {
         return quantity;
     }
+
     @Override
-    public String executeTask(){
-        executedTask = "DrivingTask: " + taskName + " has started";
-        return executedTask;
+    public boolean executeTask(){
+        startedTask = true;
+        System.out.println("ShoppingTask: " + taskName + " has started: " + startedTask);
+        return startedTask;
     }
 
     @Override
     public boolean isTaskExecuted(){
-        if (executedTask!=null){
-            isTaskExecuted=true;
-        } else {
-            isTaskExecuted = false;
-        }
-        return isTaskExecuted;
+        executedTask=true;
+        System.out.println("ShoppingTask: " + taskName + " is executed: " + executedTask);
+        return executedTask;
     }
 
 }

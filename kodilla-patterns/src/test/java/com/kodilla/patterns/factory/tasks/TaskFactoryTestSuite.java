@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class TaskFactoryTestSuite {
 
+
     @Test
     public void testFactoryDrivingTask() {
         //Given
@@ -18,6 +19,28 @@ public class TaskFactoryTestSuite {
         Assert.assertEquals("DrivingTask1", drivingTask.getTaskName());
     }
 
+    @Test
+    public void testFactoryDrivingTask2() {
+        //Given
+        TaskFactory factory = new TaskFactory();
+        TaskList taskList;
+        //When
+        Task drivingTask = factory.makeTask(TaskFactory.DRIVING);
+        System.out.println("New drivingTask: " + drivingTask);
+        taskList = new TaskList(drivingTask.getTaskName(), false, false);
+        System.out.println("TaskList-1: " + taskList);
+        boolean startedTask = drivingTask.executeTask();
+        taskList.setTaskStarted(startedTask);
+        System.out.println("TaskList-2: " + taskList);
+        boolean executedTask = drivingTask.isTaskExecuted();
+        taskList.setTaskExecuted(executedTask);
+        System.out.println("TaskList-3: " + taskList);
+
+        //Then
+        Assert.assertEquals("DrivingTask1", drivingTask.getTaskName());
+        Assert.assertEquals(true, drivingTask.executeTask());
+        Assert.assertEquals(true, drivingTask.isTaskExecuted());
+    }
 
     @Test
     public void testFactoryPaintingTask() {

@@ -4,8 +4,8 @@ public class PaintingTask implements Task{
     final String taskName;
     final String color;
     final String whatToPaint;
-    String executedTask;
-    boolean isTaskExecuted;
+    boolean startedTask;
+    boolean executedTask;
 
     public PaintingTask (String taskName, String color, String whatToPaint) {
         this.taskName = taskName;
@@ -26,18 +26,16 @@ public class PaintingTask implements Task{
     }
 
     @Override
-    public String executeTask(){
-        executedTask = "DrivingTask: " + taskName + " has started";
-        return executedTask;
+    public boolean executeTask(){
+        startedTask = true;
+        System.out.println("PaintingTask: " + taskName + " has started: " + startedTask);
+        return startedTask;
     }
 
     @Override
     public boolean isTaskExecuted(){
-        if (executedTask!=null){
-            isTaskExecuted=true;
-        } else {
-            isTaskExecuted = false;
-        }
-        return isTaskExecuted;
+        executedTask=true;
+        System.out.println("PaintingTask: " + taskName + " is executed: " + executedTask);
+        return executedTask;
     }
 }

@@ -11,28 +11,28 @@ public final class TaskFactory {
     public static final String SHOPPING = "SHOPPINGTASK";
     public static final String DRIVING = "DRIVINGTASK";
     public static final String PAINTING = "PAINTINGTASK";
-    public List<DrivingTask> executedDrivingTaskList;
-    public List<PaintingTask> executedPaintingTaskList;
-    public List<ShoppingTask> executedShoppingTaskList;
-    Task executedTask;
-    public Map<String, Task> executedTaskSet = new HashMap<String,Task>();
+    public List<DrivingTask> drivingTaskList;
+    public List<PaintingTask> paintingTaskList;
+    public List<ShoppingTask> shoppingTaskList;
+    public Task newTask;
+    public Map<String, Task> tasksMap = new HashMap<String,Task>();
 
 
     public final Task makeTask(final String taskClass) {
         switch (taskClass) {
             case SHOPPING:
-                executedTask = new ShoppingTask("ShoppingTask1", "bed", 1.0);
+                newTask = new ShoppingTask("ShoppingTask1", "bed", 1.0);
 
-                //executedShoppingTaskList.add((ShoppingTask) executedTask);
-                return executedTask;
+
+                return newTask;
             case DRIVING:
-                executedTask = new DrivingTask("DrivingTask1", "hotel1", "car1");
-                //executedDrivingTaskList.add((DrivingTask) executedTask);
-                return executedTask;
+                newTask = new DrivingTask("DrivingTask1", "hotel1", "car1");
+
+                return newTask;
             case PAINTING:
-                executedTask = new PaintingTask("PaintingTask1", "blue", "room1");
+                newTask = new PaintingTask("PaintingTask1", "blue", "room1");
                 //executedPaintingTaskList.add((PaintingTask) executedTask );
-                return executedTask;
+                return newTask;
             default:
                 return null;
         }
