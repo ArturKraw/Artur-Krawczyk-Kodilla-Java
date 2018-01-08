@@ -33,15 +33,18 @@ public class Task {
     public int getId () {
         return id;
     }
+
     @Column(name="DESCRIPTION")
     public String getDescription () {
         return description;
     }
+
     @NotNull
     @Column(name="CREATED")
     public Date getCreated () {
         return created;
     }
+
     @Column(name="DURATION")
     public int getDuration () {
         return duration;

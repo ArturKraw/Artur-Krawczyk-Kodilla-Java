@@ -44,11 +44,11 @@ public class TaskList {
     private void setId (int id) {
         this.id = id;
     }
-    public void setListName (String listName) {
-        this.listName = listName;
-    }
     private void setDescription (String description) {
         this.description = description;
+    }
+    public void setListName (String listName) {
+        this.listName = listName;
     }
 
 

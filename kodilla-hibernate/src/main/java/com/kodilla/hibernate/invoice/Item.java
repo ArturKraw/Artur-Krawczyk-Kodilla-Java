@@ -1,20 +1,20 @@
 package com.kodilla.hibernate.invoice;
 
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 
-
+@Entity
+@Table(name="ITEMS")
 public class Item {
     private int id;
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
     private Product product;
+    private Invoice invoice;
 
     public Item (BigDecimal price, int quantity, BigDecimal value) {
         this.price = price;
@@ -42,20 +42,36 @@ public class Item {
         return value;
     }
 
-
-    public void setId (int id) {
-        this.id = id;
-    }
-
+    public void setId (int id) {this.id = id;   }
     public void setPrice (BigDecimal price) {
         this.price = price;
     }
-
     public void setQuantity (int quantity) {
         this.quantity = quantity;
     }
-
     public void setValue (BigDecimal value) {
         this.value = value;
+    }
+
+    @ManyToOne
+    @JoinColumn (name = "Invoice_ID")
+    public Invoice getInvoice () {
+        return invoice;
+    }
+    public void setInvoice (Invoice invoice) {
+        this.invoice = invoice;
+    }
+    @OneToMany (
+            targetEntity = Product.class,
+            mappedBy = "invoiceList",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public Product getProduct () {
+        return product;
+    }
+
+    public void setProduct (Product product) {
+        this.product = product;
     }
 }
