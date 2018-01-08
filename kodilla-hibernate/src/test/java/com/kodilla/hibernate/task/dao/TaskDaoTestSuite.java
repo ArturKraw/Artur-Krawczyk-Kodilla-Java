@@ -39,6 +39,10 @@ public class TaskDaoTestSuite {
         int id = task.getId();
         Task readTask = taskDao.findOne(id);
         Assert.assertEquals(id, readTask.getId());
+
+        //CleanUp
+        taskDao.delete(id);
+
     }
 
     @Test
