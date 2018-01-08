@@ -1,9 +1,9 @@
 package com.kodilla.hibernate.invoice;
 
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
+        import javax.persistence.*;
+        import javax.validation.constraints.NotNull;
+        import java.math.BigDecimal;
 
 
 @Entity
@@ -53,20 +53,25 @@ public class Item {
         this.value = value;
     }
 
+
     @ManyToOne
     @JoinColumn (name = "Invoice_ID")
     public Invoice getInvoice () {
         return invoice;
     }
+
     public void setInvoice (Invoice invoice) {
         this.invoice = invoice;
     }
+
+    /*
     @OneToMany (
             targetEntity = Product.class,
             mappedBy = "invoiceList",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
+    */
     public Product getProduct () {
         return product;
     }
