@@ -74,7 +74,7 @@ public class Task {
         this.created = created;
     }
 
-    private void setDuration (int duration) {
+    public void setDuration (int duration) {
         this.duration = duration;
     }
 
