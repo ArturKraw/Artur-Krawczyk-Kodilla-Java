@@ -10,10 +10,11 @@ package com.kodilla.hibernate.invoice;
 @Table(name="ITEMS")
 public class Item {
     private int itemId;
+    private Product product;
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
-    private Product product;
+
     private Invoice invoice;
 
     public Item() {
@@ -59,6 +60,7 @@ public class Item {
 
     @ManyToOne
     @JoinColumn (name = "Invoice_ID")
+
     public Invoice getInvoice () {
         return invoice;
     }

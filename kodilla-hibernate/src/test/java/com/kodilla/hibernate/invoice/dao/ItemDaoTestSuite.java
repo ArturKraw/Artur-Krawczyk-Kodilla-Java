@@ -29,20 +29,25 @@ public class ItemDaoTestSuite {
 
     @Test
     public void testItemDaoSave() {
+        //CleanUp if one test
+        //itemDao.deleteAll();
+
         //Given
         item = new Item(price1, 3);
         //When
         itemDao.save(item);
         //Then
-        int id = item.getItemId();
-        Item readItem = itemDao.findOne(id);
-        Assert.assertEquals(id, readItem.getItemId());
-        //CleanUp
-        itemDao.deleteAll();
+        int itemId = item.getItemId();
+        Item readItem = itemDao.findOne(itemId);
+        Assert.assertEquals(itemId, readItem.getItemId());
+
         }
 
     @Test
     public void testItemDaoFindByPrice() {
+        //CleanUp if one test
+        //itemDao.deleteAll();
+
         //Given
         Item item = new Item(price1, 5);
         itemDao.save(item);
@@ -51,7 +56,6 @@ public class ItemDaoTestSuite {
         List<Item> readItems = itemDao.findByPrice(price);
         //Then
         Assert.assertEquals(1, readItems.size());
-        //CleanUp
-        itemDao.deleteAll();
+
     }
 }

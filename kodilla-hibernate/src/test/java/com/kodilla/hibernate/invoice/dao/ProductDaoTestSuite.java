@@ -24,11 +24,13 @@ public class ProductDaoTestSuite {
     public void before(){
         System.out.println("Test Case: begin");
         productDao.deleteAll();
-
     }
 
     @Test
     public void testProductDaoQuantity() {
+        //CleanUp if one test
+        productDao.deleteAll();
+
         //Given
         Product product1 = new Product(PRODUCT1);
         Product product2 = new Product(PRODUCT2);
@@ -38,12 +40,14 @@ public class ProductDaoTestSuite {
         long productsQuantity = productDao.count();
         //Then
         Assert.assertEquals(2, productsQuantity);
-        //CleanUp
-        productDao.deleteAll();
+
     }
 
     @Test
     public void testProductDaoSave() {
+        //CleanUp if one test
+        //productDao.deleteAll();
+
         //Given
         product = new Product(PRODUCT1);
 
@@ -54,23 +58,23 @@ public class ProductDaoTestSuite {
         //Then
         Product readProduct = productDao.findOne(productId);
         Assert.assertEquals(productId, readProduct.getProductId());
-        productDao.deleteAll();
+
     }
-
-
-
 
     @Test
     public void testProductDaoFindByName() {
+        //CleanUp if one test
+        //productDao.deleteAll();
+
         //Given
         Product product = new Product(PRODUCT1);
         productDao.save(product);
 
         //When
         String name = product.getName();
-        //long productsQuantity = productDao.count();
+
         //Then
         Assert.assertEquals(name, PRODUCT1);
-        productDao.deleteAll();
+
     }
 }

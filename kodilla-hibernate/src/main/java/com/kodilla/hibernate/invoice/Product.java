@@ -11,6 +11,7 @@ import java.util.List;
 public class Product {
     private int productId;
     private String name;
+
     private List<Item> items = new ArrayList<>();
 
 
