@@ -6,7 +6,7 @@ package com.kodilla.hibernate.invoice;
         import java.util.List;
 
 @Entity
-@Table(name="INVOICE")
+@Table(name="INVOICES")
 public class Invoice {
     private int invoiceId;
     private String number;

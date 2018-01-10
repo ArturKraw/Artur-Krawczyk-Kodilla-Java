@@ -8,6 +8,7 @@ package com.kodilla.hibernate.invoice.dao;
 import com.kodilla.hibernate.invoice.Invoice;
 import com.kodilla.hibernate.invoice.Item;
 import com.kodilla.hibernate.invoice.Product;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,10 @@ public class InvoiceDaoTestSuite {
     @Autowired
     private InvoiceDao invoiceDao;
     private Invoice invoice;
-    private Product product;
+    @Autowired
+    private ProductDao productDao;
+    private Product product1;
+    private Product product2;
     private final String Number1 = "A-1-01-2018";
     private final String Number2 = "A=2-01-2018";
     private static final BigDecimal price1 = new BigDecimal(3000.00);
@@ -35,16 +39,22 @@ public class InvoiceDaoTestSuite {
     private static final String Product1 = "PC";
     private static final String Product2 = "Laptop";
 
+    @Before
     public void before(){
         System.out.println("Test Case: begin");
         invoiceDao.deleteAll();
-
+        productDao.deleteAll();
+        product1 = new Product(Product1);
+        product2 = new Product(Product2);
+        productDao.save(product1);
+        productDao.save(product2);
     }
+
 
     @Test
     public void testInvoiceDaoQuantity() {
         //Given
-        invoiceDao.deleteAll();
+        //invoiceDao.deleteAll();
         Invoice invoice1 = new Invoice(Number1);
         Invoice invoice2 = new Invoice(Number2);
         invoiceDao.save(invoice1);
@@ -88,19 +98,18 @@ public class InvoiceDaoTestSuite {
     @Test
     public void testInvoiceDaoSaveWithItems() {
         //Given
-        invoiceDao.deleteAll();
+
         invoice = new Invoice (Number1);
-        //product = new Product(Product1);
         Item item1 = new Item(price1, 5);
         Item item2 = new Item(price2, 3);
-        item1.setProduct(product);
-        item2.setProduct(product);
+        item1.setProduct(product1);
+        item2.setProduct(product2);
         item1.setInvoice(invoice);
         item2.setInvoice(invoice);
+        product1.getItems().add(item1);
+        product2.getItems().add(item2);
         invoice.getItems().add(item1);
         invoice.getItems().add(item2);
-        //product.getItems().add(item1);
-        //product.getItems().add(item2);
 
         //When
         invoiceDao.save(invoice);

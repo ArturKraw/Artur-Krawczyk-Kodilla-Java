@@ -11,9 +11,7 @@ import java.util.List;
 public class Product {
     private int productId;
     private String name;
-
     private List<Item> items = new ArrayList<>();
-
 
     public Product() {
     }
@@ -35,10 +33,10 @@ public class Product {
         return name;
     }
 
-    public void setProductId (int productId) {
+    private void setProductId (int productId) {
         this.productId = productId;
     }
-    public void setName (String name) {
+    private void setName (String name) {
         this.name = name;
     }
 

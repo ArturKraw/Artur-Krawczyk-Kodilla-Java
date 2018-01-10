@@ -23,6 +23,7 @@ public class Item {
     public Item (BigDecimal price, int quantity) {
         this.price = price;
         this.quantity = quantity;
+        this.value = price.multiply(new BigDecimal(quantity));
     }
 
     @Id
@@ -42,7 +43,6 @@ public class Item {
     }
     @Column(name="VALUE")
     public BigDecimal getValue () {
-        value = getPrice().multiply(new BigDecimal(getQuantity()));
         return value;
     }
 
@@ -56,7 +56,6 @@ public class Item {
     public void setValue (BigDecimal value) {
         this.value = value;
     }
-
 
     @ManyToOne
     @JoinColumn (name = "Invoice_ID")

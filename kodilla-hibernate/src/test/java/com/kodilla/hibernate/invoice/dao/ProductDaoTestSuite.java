@@ -17,10 +17,12 @@ import java.util.List;
 public class ProductDaoTestSuite {
     @Autowired
     private ProductDao productDao;
-    private Product product;
+    private Product product1;
+    private Product product2;
     private static final String PRODUCT1 = "PC";
     private static final String PRODUCT2 = "Laptop";
 
+    @Before
     public void before(){
         System.out.println("Test Case: begin");
         productDao.deleteAll();
@@ -28,12 +30,10 @@ public class ProductDaoTestSuite {
 
     @Test
     public void testProductDaoQuantity() {
-        //CleanUp if one test
-        productDao.deleteAll();
 
         //Given
-        Product product1 = new Product(PRODUCT1);
-        Product product2 = new Product(PRODUCT2);
+        product1 = new Product(PRODUCT1);
+        product2 = new Product(PRODUCT2);
         productDao.save(product1);
         productDao.save(product2);
         //When
@@ -49,11 +49,11 @@ public class ProductDaoTestSuite {
         //productDao.deleteAll();
 
         //Given
-        product = new Product(PRODUCT1);
+        product1 = new Product(PRODUCT1);
 
         //When
-        productDao.save(product);
-        int productId = product.getProductId();
+        productDao.save(product1);
+        int productId = product1.getProductId();
 
         //Then
         Product readProduct = productDao.findOne(productId);
@@ -67,11 +67,11 @@ public class ProductDaoTestSuite {
         //productDao.deleteAll();
 
         //Given
-        Product product = new Product(PRODUCT1);
-        productDao.save(product);
+        product1 = new Product(PRODUCT1);
+        productDao.save(product1);
 
         //When
-        String name = product.getName();
+        String name = product1.getName();
 
         //Then
         Assert.assertEquals(name, PRODUCT1);
