@@ -61,7 +61,7 @@ public class TaskDaoTestSuite {
     public void testTaskDaoSaveWithFinancialDetails() {
         //Given
         Task task = new Task("DESCRIPTION", 30);
-        task.setTaskFinancialDetails(new TaskFinancialDetails(new BigDecimal(120), false));
+        task.setTaskFinancialDetails(new TaskFinancialDetails(new BigDecimal(120),false));
 
         //When
         taskDao.save(task);

@@ -8,7 +8,7 @@ package com.kodilla.hibernate.invoice;
 @Entity
 @Table(name="INVOICE")
 public class Invoice {
-    private int id;
+    private int invoiceId;
     private String number;
     private List<Item> items = new ArrayList<>();
 
@@ -22,30 +22,30 @@ public class Invoice {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name="ID", unique=true)
-    public int getId () {
-        return id;
+    @Column(name="Invoice_ID", unique=true)
+    public int getInvoiceId () {
+        return invoiceId;
     }
 
     @Column(name="INVOICE_NUMBER")
     public String getNumber () {
         return number;
     }
-    private void setId (int id) {
-        this.id = id;
+
+    private void setInvoiceId (int invoiceId) {
+        this.invoiceId = invoiceId;
     }
     private void setNumber (String number) {
         this.number = number;
     }
 
-    /*
+
     @OneToMany (
             targetEntity = Item.class,
-            mappedBy = "itemList",
+            mappedBy = "invoice",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    */
     public List <Item> getItems () {
         return items;
     }

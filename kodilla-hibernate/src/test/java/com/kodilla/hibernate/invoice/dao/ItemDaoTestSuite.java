@@ -1,0 +1,57 @@
+package com.kodilla.hibernate.invoice.dao;
+
+
+import com.kodilla.hibernate.invoice.Item;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ItemDaoTestSuite {
+    @Autowired
+    private ItemDao itemDao;
+    private Item item;
+    private static final BigDecimal price1 = new BigDecimal(3000.00);
+
+    @Before
+    public void before(){
+        System.out.println("Test Case: begin");
+        itemDao.deleteAll();
+    }
+
+    @Test
+    public void testItemDaoSave() {
+        //Given
+        item = new Item(price1, 3);
+        //When
+        itemDao.save(item);
+        //Then
+        int id = item.getItemId();
+        Item readItem = itemDao.findOne(id);
+        Assert.assertEquals(id, readItem.getItemId());
+        //CleanUp
+        itemDao.deleteAll();
+        }
+
+    @Test
+    public void testItemDaoFindByPrice() {
+        //Given
+        Item item = new Item(price1, 5);
+        itemDao.save(item);
+        BigDecimal price = item.getPrice();
+        //When
+        List<Item> readItems = itemDao.findByPrice(price);
+        //Then
+        Assert.assertEquals(1, readItems.size());
+        //CleanUp
+        itemDao.deleteAll();
+    }
+}

@@ -9,25 +9,27 @@ package com.kodilla.hibernate.invoice;
 @Entity
 @Table(name="ITEMS")
 public class Item {
-    private int id;
+    private int itemId;
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
     private Product product;
     private Invoice invoice;
 
-    public Item (BigDecimal price, int quantity, BigDecimal value) {
+    public Item() {
+    }
+
+    public Item (BigDecimal price, int quantity) {
         this.price = price;
         this.quantity = quantity;
-        this.value = value;
     }
 
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name="ID", unique=true)
-    public int getId () {
-        return id;
+    @Column(name="Item_ID", unique=true)
+    public int getItemId () {
+        return itemId;
     }
     @Column(name="PRICE")
     public BigDecimal getPrice () {
@@ -39,10 +41,11 @@ public class Item {
     }
     @Column(name="VALUE")
     public BigDecimal getValue () {
+        value = getPrice().multiply(new BigDecimal(getQuantity()));
         return value;
     }
 
-    public void setId (int id) {this.id = id;   }
+    public void setItemId (int itemId) {this.itemId = itemId;   }
     public void setPrice (BigDecimal price) {
         this.price = price;
     }
@@ -59,23 +62,15 @@ public class Item {
     public Invoice getInvoice () {
         return invoice;
     }
-
     public void setInvoice (Invoice invoice) {
         this.invoice = invoice;
     }
 
-    /*
-    @OneToMany (
-            targetEntity = Product.class,
-            mappedBy = "invoiceList",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    */
+    @ManyToOne
+    @JoinColumn (name = "Product_ID")
     public Product getProduct () {
         return product;
     }
-
     public void setProduct (Product product) {
         this.product = product;
     }
