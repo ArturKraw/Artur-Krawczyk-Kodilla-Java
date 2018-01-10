@@ -1,6 +1,5 @@
 package com.kodilla.hibernate.invoice.dao;
 
-
 import com.kodilla.hibernate.invoice.Item;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -29,9 +27,6 @@ public class ItemDaoTestSuite {
 
     @Test
     public void testItemDaoSave() {
-        //CleanUp if one test
-        //itemDao.deleteAll();
-
         //Given
         item = new Item(price1, 3);
         //When
@@ -40,14 +35,10 @@ public class ItemDaoTestSuite {
         int itemId = item.getItemId();
         Item readItem = itemDao.findOne(itemId);
         Assert.assertEquals(itemId, readItem.getItemId());
-
-        }
+    }
 
     @Test
     public void testItemDaoFindByPrice() {
-        //CleanUp if one test
-        //itemDao.deleteAll();
-
         //Given
         Item item = new Item(price1, 5);
         itemDao.save(item);
@@ -56,6 +47,5 @@ public class ItemDaoTestSuite {
         List<Item> readItems = itemDao.findByPrice(price);
         //Then
         Assert.assertEquals(1, readItems.size());
-
     }
 }

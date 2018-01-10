@@ -1,6 +1,5 @@
 package com.kodilla.hibernate.invoice;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -26,8 +25,8 @@ public class Product {
     @Column(name="Product_ID", unique=true)
     public int getProductId () {
         return productId;
+    }
 
-   }
     @Column(name="PRODUCT_NAME")
     public String getName () {
         return name;
@@ -40,13 +39,11 @@ public class Product {
         this.name = name;
     }
 
-
-
     @OneToMany (
-            targetEntity = Item.class,
-            mappedBy = "product",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+         targetEntity = Item.class,
+         mappedBy = "product",
+         cascade = CascadeType.ALL,
+         fetch = FetchType.LAZY
     )
     public List<Item> getItems () {
         return items;

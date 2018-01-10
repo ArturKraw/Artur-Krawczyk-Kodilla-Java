@@ -30,7 +30,6 @@ public class ProductDaoTestSuite {
 
     @Test
     public void testProductDaoQuantity() {
-
         //Given
         product1 = new Product(PRODUCT1);
         product2 = new Product(PRODUCT2);
@@ -40,41 +39,28 @@ public class ProductDaoTestSuite {
         long productsQuantity = productDao.count();
         //Then
         Assert.assertEquals(2, productsQuantity);
-
     }
 
     @Test
     public void testProductDaoSave() {
-        //CleanUp if one test
-        //productDao.deleteAll();
-
         //Given
         product1 = new Product(PRODUCT1);
-
         //When
         productDao.save(product1);
         int productId = product1.getProductId();
-
         //Then
         Product readProduct = productDao.findOne(productId);
         Assert.assertEquals(productId, readProduct.getProductId());
-
     }
 
     @Test
     public void testProductDaoFindByName() {
-        //CleanUp if one test
-        //productDao.deleteAll();
-
         //Given
         product1 = new Product(PRODUCT1);
         productDao.save(product1);
-
         //When
         String name = product1.getName();
-
         //Then
         Assert.assertEquals(name, PRODUCT1);
-
     }
 }
