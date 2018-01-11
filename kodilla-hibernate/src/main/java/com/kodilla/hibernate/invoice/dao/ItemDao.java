@@ -12,4 +12,5 @@ import java.util.List;
 @Repository
 public interface ItemDao extends CrudRepository<Item, Integer> {
     List<Item> findByPrice (BigDecimal price);
+    Item findItemByPrice (BigDecimal price);
 }
