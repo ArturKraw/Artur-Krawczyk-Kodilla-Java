@@ -70,8 +70,8 @@ public class CompanyDaoTestSuite {
         @Before
         public void before() {
             System.out.println("\n" + "Test Case: begin" + "\n");
-            //companyDao.deleteAll();
-            //employeeDao.deleteAll();
+            employeeDao.deleteAll();
+            companyDao.deleteAll();
         }
 
     @Ignore

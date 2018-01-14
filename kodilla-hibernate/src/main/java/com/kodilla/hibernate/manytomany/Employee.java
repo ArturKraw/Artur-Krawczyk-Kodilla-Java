@@ -7,8 +7,8 @@ import java.util.List;
 
 
 @NamedQuery(
-    name = "Employee.employeesWithThisFirstname",
-    query = "FROM Employee WHERE firstname = :ThisFIRSTNAME"
+        name = "Employee.employeesWithThisFirstname",
+        query = "FROM Employee WHERE firstname = :ThisFIRSTNAME"
 )
 
 @Entity
@@ -57,7 +57,7 @@ public class Employee {
     private void setLastname(String lastname) {
         this.lastname = lastname;
     }
-
+//
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "JOIN_COMPANY_EMPLOYEE",

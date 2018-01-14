@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface EmployeeDao extends CrudRepository<Employee, Integer> {
     //List<Employee> findByfFirstname (String firstname);
+
     @Query
     List<Employee> employeesWithThisFirstname(@Param("ThisFIRSTNAME") String firstname);
-
 }
