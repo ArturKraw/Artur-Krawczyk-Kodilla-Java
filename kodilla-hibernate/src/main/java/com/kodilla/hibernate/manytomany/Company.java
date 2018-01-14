@@ -7,9 +7,8 @@ import java.util.List;
 
 
 @NamedNativeQuery(
-        name = "Company.retrieveCompaniesWithNameStartingWith",
-        query = "SELECT * FROM Company" +
-                " WHERE SUBSTRING(name, 1, 3)  = NAMEF3CHAR",
+        name = "Company.companiesWithThisNamesSpec",
+        query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :N3C",
         resultClass = Company.class
 )
 
@@ -49,12 +48,14 @@ public class Company {
         this.name = name;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "companies")
-    public List <Employee> getEmployees () {
+    @ManyToMany
+            (cascade = CascadeType.ALL,
+             mappedBy = "companies")
+    public List <Employee> getEmployees ()    {
         return employees;
     }
 
-    private void setEmployees (List <Employee> employees) {
+    private void setEmployees (List <Employee> employees)    {
         this.employees = employees;
     }
 }
