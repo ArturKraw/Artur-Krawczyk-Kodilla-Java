@@ -21,6 +21,7 @@ public class CompanyDaoTestSuite {
     private CompanyDao companyDao;
     @Autowired
     private EmployeeDao employeeDao;
+
     private Employee johnSmith;
     private Employee stephanieClarckson;
     private Employee lindaKovalsky;
