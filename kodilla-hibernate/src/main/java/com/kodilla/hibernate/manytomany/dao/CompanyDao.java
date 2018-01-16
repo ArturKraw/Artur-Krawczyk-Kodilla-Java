@@ -12,11 +12,11 @@ import java.util.List;
 @Transactional
 @Repository
 public interface CompanyDao extends CrudRepository<Company, Integer> {
-
-    //List<Company> findByName (String name);
-
+    List<Company> findById (int id);
+    List<Company> findByName (String name);
+    //List<Company> removeCompanyBy(String name);
     @Query
-    List<Company> companiesWithThisNamesSpec(@Param("N3C") String name);
+    List<Company> retrieveWithThisNamesSpec(@Param("N3C") String name);
 
 }
 

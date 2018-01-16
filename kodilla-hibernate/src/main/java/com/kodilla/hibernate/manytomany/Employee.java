@@ -7,8 +7,8 @@ import java.util.List;
 
 
 @NamedQuery(
-        name = "Employee.employeesWithThisFirstname",
-        query = "FROM Employee WHERE firstname = :ThisFIRSTNAME"
+        name = "Employee.retrieveWithThisLastname",
+        query = "FROM Employee WHERE lastname = :THELASTNAME"
 )
 
 @Entity
@@ -42,7 +42,7 @@ public class Employee {
     }
 
     @NotNull
-    @Column(name = "LASTNAME")
+    @Column(name = "LASTANAME")
     public String getLastname() {
         return lastname;
     }
@@ -58,7 +58,7 @@ public class Employee {
         this.lastname = lastname;
     }
 //
-    @ManyToMany(cascade = CascadeType.ALL)
+    //@ManyToMany
     @JoinTable(
             name = "JOIN_COMPANY_EMPLOYEE",
             joinColumns =
@@ -72,6 +72,7 @@ public class Employee {
                      referencedColumnName = "COMPANY_ID"
                     )}
     )
+    @ManyToMany (cascade = CascadeType.ALL)
     public List <Company> getCompanies () {
         return companies;
     }
