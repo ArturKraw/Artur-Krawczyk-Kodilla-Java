@@ -74,7 +74,7 @@ public class CompanyDaoTestSuite {
         frankSmith.getCompanies().add(generalli);
     }
 
-    public void employeesRemovedFromCompanies () {
+    public void employeesRemoveFromCompanies () {
         johnSmith.getCompanies().remove(dataProjects);
         johnSmith.getCompanies().remove(generalMotors);
         stephanieClarckson.getCompanies().remove(generalli);
@@ -114,17 +114,24 @@ public class CompanyDaoTestSuite {
         System.out.println("\n" + "generalli.getId(): " + generalli.getId() + "\n"); //0
     }
 
-     @Before
+
+    @Before
      public void before() {
         System.out.println("\n" + "Test Case: begin" + "\n");
         companyDao.deleteAll();
         employeeDao.deleteAll();
      }
-    //@Ignore
+
+
+
+
+     //@Ignore
     @Test //Nr 1
-    public void testSaveCompaniesToDao () {
+    public void test_1_SaveCompaniesToDao () {
         //Given
-        System.out.println("\n" + "Test 1: testSaveCompaniesToDao ");
+         companyDao.deleteAll();
+         employeeDao.deleteAll();
+         System.out.println("\n" + "Test 1: testSaveCompaniesToDao ");
         //When
         companiesSaveToCompanyDao();
         //Then
@@ -139,9 +146,9 @@ public class CompanyDaoTestSuite {
             System.out.println("\n" + "Test 1: testSaveCompaniesToDao  - exception" + "\n");
         }
     }
-   @Ignore
+   //@Ignore
     @Test //Nr 1a
-    public void testDeleteCompaniesfromDao () {
+    public void test_1a_DeleteCompaniesfromDao () {
         //Given
         System.out.println("\n" + "Test 1a: testDeleteCompaniesfromDao  - exception" + "\n");
         companiesSaveToCompanyDao();
@@ -167,8 +174,10 @@ public class CompanyDaoTestSuite {
 
     //@Ignore
     @Test // Nr 2
-    public void testSaveEmployeesToDao () {
+    public void test_2_SaveEmployeesToDao () {
         //Given
+        companyDao.deleteAll();
+        employeeDao.deleteAll();
         System.out.println("\n" + "Test 2: testSaveEmployeesToDao");
         //When
         employeesSaveToEmployeeDao();
@@ -185,9 +194,9 @@ public class CompanyDaoTestSuite {
         }
     }
 
-    @Ignore
+    //@Ignore
     @Test // Nr 2a
-    public void testDeleteEmployeesFromDao () {
+    public void test_2a_DeleteEmployeesFromDao () {
         //Given
         System.out.println("\n" + "Test 2a: testDeleteEmployeesFromDao");
         employeesSaveToEmployeeDao();
@@ -215,8 +224,11 @@ public class CompanyDaoTestSuite {
     }
     //@Ignore
     @Test //Nr 3
-    public void testSaveCompaniesAndEmployesToDao () {
+    public void test_3_SaveCompaniesAndEmployesToDao () {
         //Given
+        companyDao.deleteAll();
+        employeeDao.deleteAll();
+        employeesRemoveFromCompanies();
         System.out.println("\n" + "Test 3: testSaveCompaniesAndEmployesToDao");
         //When
         companiesSaveToCompanyDao();
@@ -240,13 +252,14 @@ public class CompanyDaoTestSuite {
         }
     }
 
-    @Ignore
+    //@Ignore
     @Test // Nr 3a
-    public void testDeleteEmployeesAndCompanyFromDao () {
+    public void test_3a_DeleteEmployeesAndCompanyFromDao () {
         //Given
         System.out.println("\n" + "Test 3a: testDeleteEmployeesAndCompanyFromDao");
         companiesSaveToCompanyDao();
         employeesSaveToEmployeeDao();
+        employeesRemoveFromCompanies();
         //System.out.println("\n" + "companyDao.count(): " + companyDao.count() +"\n"); //4
         //System.out.println("\n" + "employeeDao.count(): " + employeeDao.count() +"\n"); //4
         //When
@@ -258,19 +271,22 @@ public class CompanyDaoTestSuite {
         //System.out.println("\n" + "johnSmith.size(): " + employeeDao.findByLastname("Smith").size() + "\n"); //0
         //Then
         try {
-            Assert.assertEquals(0, companyDao.findByName("Data Projects").size());
+            Assert.assertEquals(1, companyDao.findByName("Data Projects").size());
 
-            Assert.assertEquals(3, companyDao.count() );
+            Assert.assertEquals(4, companyDao.count() );
             Assert.assertEquals(0, employeeDao.count());
         } catch (Exception e) {
             System.out.println("\n" + "Test 3a: testDeleteEmployeesAndCompanyFromDao  - exception" + "\n");
         }
     }
 
-    @Ignore
+    //@Ignore
     @Test //Nr 4
-    public void test3AndAddEmployesToCompanies () {
+    public void test_4_saveTest3AndAddEmployesToCompanies () {
         //Given
+        companyDao.deleteAll();
+        employeeDao.deleteAll();
+        employeesRemoveFromCompanies();
         System.out.println("\n" + "Test 4: test3AndAddEmployesToCompanies");
         //When
         companiesSaveToCompanyDao();
@@ -297,11 +313,13 @@ public class CompanyDaoTestSuite {
             System.out.println("\n" + "Test 4: test3AndAddEmployesToCompanies  - exception" + "\n");
         }
     }
-
-    @Ignore
+    //@Ignore
     @Test //Nr 5
-    public void testCheckFindEmployeByName() {
+    public void test_5_CheckAnddFindEmployeByName() {
         //Given
+        companyDao.deleteAll();
+        employeeDao.deleteAll();
+        employeesRemoveFromCompanies();
         System.out.println("\n" + "Test 5: testCheckFindEmployeByName");
         companiesSaveToCompanyDao();
         employeesSaveToEmployeeDao();
@@ -322,10 +340,13 @@ public class CompanyDaoTestSuite {
         }
     }
 
-    @Ignore
+    //@Ignore
     @Test //Nr 6
-    public void testCheckFindCompanyByName() {
+    public void test_6_CheckFindCompanyByName() {
         //Given
+        companyDao.deleteAll();
+        employeeDao.deleteAll();
+        employeesRemoveFromCompanies();
         System.out.println("\n" + "Test 6: testCheckFindCompanyByName");
         companiesSaveToCompanyDao();
         employeesSaveToEmployeeDao();
@@ -346,10 +367,14 @@ public class CompanyDaoTestSuite {
         }
     }
 
+
+
     @Ignore
     @Test // nr 7
-    public void deleteCompaniesFromDao () {
+    public void test_7_deleteCompaniesFromDao () {
         //Given
+        companyDao.deleteAll();
+        employeeDao.deleteAll();
         System.out.println("\n" + "Test 7: deleteCompaniesFromDao");
         companiesSaveToCompanyDao();
         employeesSaveToEmployeeDao();
@@ -370,8 +395,10 @@ public class CompanyDaoTestSuite {
     }
     @Ignore
     @Test // nr 8
-    public void deleteEmployeeFromDao () {
+    public void test_8_deleteEmployeeFromDao () {
         //Given
+        companyDao.deleteAll();
+        employeeDao.deleteAll();
         System.out.println("\n" + "Test 8: deleteEmployeeFromDao()"); //4
         companiesSaveToCompanyDao();
         employeesSaveToEmployeeDao();
@@ -393,9 +420,11 @@ public class CompanyDaoTestSuite {
 
     @Ignore
     @Test // nr 9
-    public void deleteCompanyAndEmployeeXXXFromDao () {
+    public void test_9_deleteCompanyAndEmployeeXXXFromDao () {
         //Given
         System.out.println("\n" + "Test 9: deleteCompanyAndEmployeeXXXFromDao"); //4
+        companyDao.deleteAll();
+        employeeDao.deleteAll();
         companiesSaveToCompanyDao();
         employeesSaveToEmployeeDao();
         employeesAddToCompanies ();
@@ -417,9 +446,9 @@ public class CompanyDaoTestSuite {
         }
     }
 
-    @Ignore
+    //@Ignore
     @Test
-    public void checkCompaniesAndEmployeesInDao () {
+    public void test_0_checkCompaniesAndEmployeesInDao () {
         //Given
         System.out.println("\n" + "dataProjects.getName(): " + dataProjects.getName() +"\n"); //Data Projects
         System.out.println("\n" + "dataProjects.getId(): " + dataProjects.getId() +"\n"); //0
