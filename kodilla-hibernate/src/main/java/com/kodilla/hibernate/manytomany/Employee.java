@@ -58,21 +58,14 @@ public class Employee {
         this.lastname = lastname;
     }
 //
-    //@ManyToMany
+    @ManyToMany
     @JoinTable(
             name = "JOIN_COMPANY_EMPLOYEE",
             joinColumns =
-                    {@JoinColumn(
-                     name = "EMPLOYEE_ID",
-                     referencedColumnName = "EMPLOYEE_ID"
-                    )},
+                    {@JoinColumn(name = "EMPLOYEE_ID",referencedColumnName = "EMPLOYEE_ID")},
             inverseJoinColumns =
-                    {@JoinColumn(
-                     name = "COMPANY_ID",
-                     referencedColumnName = "COMPANY_ID"
-                    )}
+                    {@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")}
     )
-    @ManyToMany (cascade = CascadeType.ALL)
     public List <Company> getCompanies () {
         return companies;
     }

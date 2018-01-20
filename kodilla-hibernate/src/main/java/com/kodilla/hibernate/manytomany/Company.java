@@ -10,7 +10,7 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.retrieveWithThisNamesSpec",
-        query = "SELECT * FROM COMPANIES" +
+        query = "SELECT * FROM companies" +
                 " WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :N3C",
         resultClass = Company.class
 )
@@ -31,7 +31,7 @@ public class Company {
 
     @Id
     @GeneratedValue
-    @NotNull
+    //@NotNull
     @Column(name = "COMPANY_ID", unique = true)
     public int getId() {
         return id;
@@ -52,8 +52,7 @@ public class Company {
     }
 
     @ManyToMany
-            (cascade = CascadeType.ALL,
-                    mappedBy = "companies")
+            (cascade = CascadeType.ALL, mappedBy = "companies")
     public List <Employee> getEmployees ()    {
         return employees;
     }
