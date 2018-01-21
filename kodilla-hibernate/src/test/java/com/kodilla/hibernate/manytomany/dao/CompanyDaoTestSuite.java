@@ -18,9 +18,7 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
-    /**
-     *
-     */
+
     @Autowired
     private CompanyDao companyDao;
     @Autowired
@@ -100,21 +98,6 @@ public class CompanyDaoTestSuite {
         employeeDao.save(frankSmith);
     }
 
-    public void printEmployeesIds () {
-          System.out.println("\n"+"stephanieClarckson.getId(): "+stephanieClarckson.getId()+"\n"); //0
-         System.out.println("\n"+"lindaKovalsky.getId(): "+lindaKovalsky.getId()+"\n"); //0
-         System.out.println("\n"+"johnSmith.getId(): "+johnSmith.getId()+"\n"); //0
-         System.out.println("\n"+"frankSmith.getId(): "+frankSmith.getId()+"\n"); //0
-    }
-
-    public void printCompaniesIds () {
-        System.out.println("\n" + "dataProjects.getId(): " + dataProjects.getId() + "\n"); //0
-        System.out.println("\n" + "datsunCorp.getId(): " + datsunCorp.getId() + "\n"); //0
-        System.out.println("\n" + "generalMotors.getId(): " + generalMotors.getId() + "\n"); //0
-        System.out.println("\n" + "generalli.getId(): " + generalli.getId() + "\n"); //0
-    }
-
-
     @Before
      public void before() {
         System.out.println("\n" + "Test Case: begin" + "\n");
@@ -122,15 +105,10 @@ public class CompanyDaoTestSuite {
         employeeDao.deleteAll();
      }
 
-
-
-
      //@Ignore
     @Test //Nr 1
     public void test_1_SaveCompaniesToDao () {
         //Given
-         companyDao.deleteAll();
-         employeeDao.deleteAll();
          System.out.println("\n" + "Test 1: testSaveCompaniesToDao ");
         //When
         companiesSaveToCompanyDao();
@@ -140,7 +118,6 @@ public class CompanyDaoTestSuite {
             Assert.assertNotEquals(0, datsunCorp.getId());
             Assert.assertNotEquals(0, generalMotors.getId());
             Assert.assertNotEquals(0, generalli.getId());
-
             Assert.assertEquals(4, companyDao.count());
         } catch (Exception e) {
             System.out.println("\n" + "Test 1: testSaveCompaniesToDao  - exception" + "\n");
@@ -152,13 +129,8 @@ public class CompanyDaoTestSuite {
         //Given
         System.out.println("\n" + "Test 1a: testDeleteCompaniesfromDao  - exception" + "\n");
         companiesSaveToCompanyDao();
-        //System.out.println("\n+" + "dataProjects.geId(): " + dataProjects.getId() +"\n"); //Data Projects
-        //System.out.println("\n" + "companyDao.count(): " + companyDao.count() +"\n"); //4
         //When
         companyDao.delete(dataProjects);
-        //System.out.println("\n" + "companyDao.count(): " + companyDao.count() +"\n"); //4
-        //System.out.println("\n" + "dataProjects.geId(): " + dataProjects.getId() +"\n"); //Data Projects
-        //System.out.println("\n" + "companyDao.findByName(Data Projects).size(): " + companyDao.findByName("Data Projects").size() + "\n"); //0
         //Then
         try {
             Assert.assertNotEquals(0, dataProjects.getId());
@@ -176,8 +148,6 @@ public class CompanyDaoTestSuite {
     @Test // Nr 2
     public void test_2_SaveEmployeesToDao () {
         //Given
-        companyDao.deleteAll();
-        employeeDao.deleteAll();
         System.out.println("\n" + "Test 2: testSaveEmployeesToDao");
         //When
         employeesSaveToEmployeeDao();
@@ -187,7 +157,6 @@ public class CompanyDaoTestSuite {
             Assert.assertNotEquals(0, stephanieClarckson.getId());
             Assert.assertNotEquals(0, lindaKovalsky.getId());
             Assert.assertNotEquals(0, frankSmith.getId());
-
             Assert.assertEquals(4, employeeDao.count());
         } catch (Exception e) {
             System.out.println("\n" + "Test 2: testSaveEmployeesToDao  - exception" + "\n");
@@ -200,23 +169,10 @@ public class CompanyDaoTestSuite {
         //Given
         System.out.println("\n" + "Test 2a: testDeleteEmployeesFromDao");
         employeesSaveToEmployeeDao();
-        ///System.out.println("\n" + "employeeDao.count(): " + employeeDao.count() +"\n"); //4
-        //System.out.println("\n" + "johnSmith.getId(): " + johnSmith.getId() +"\n"); //0
         //When
         employeeDao.deleteAll();
-        //employeeDao.delete(johnSmith);
-        //System.out.println("\n" + "employeeDao.count(): " + employeeDao.count() +"\n"); //3
-        //System.out.println("\n" + "johnSmith.size(): " + employeeDao.findByLastname("Smith").size() + "\n"); //0
-        //System.out.println("\n" + "johnSmith.getId(): " + johnSmith.getId() +"\n"); //0
-
         //Then
         try {
-            //Assert.assertNotEquals(0, johnSmith.getId());
-            //Assert.assertEquals(1, employeeDao.findByLastname("Smith").size());
-            //Assert.assertNotEquals(0, stephanieClarckson.getId());
-            //Assert.assertNotEquals(0, lindaKovalsky.getId());
-            //Assert.assertNotEquals(0, frankSmith.getId());
-
             Assert.assertEquals(0, employeeDao.count());
         } catch (Exception e) {
             System.out.println("\n" + "Test 2a: testDeleteEmployeesToDao  - exception" + "\n");
@@ -226,8 +182,6 @@ public class CompanyDaoTestSuite {
     @Test //Nr 3
     public void test_3_SaveCompaniesAndEmployesToDao () {
         //Given
-        companyDao.deleteAll();
-        employeeDao.deleteAll();
         employeesRemoveFromCompanies();
         System.out.println("\n" + "Test 3: testSaveCompaniesAndEmployesToDao");
         //When
@@ -239,12 +193,10 @@ public class CompanyDaoTestSuite {
             Assert.assertNotEquals(0, datsunCorp.getId());
             Assert.assertNotEquals(0, generalMotors.getId());
             Assert.assertNotEquals(0, generalli.getId());
-
             Assert.assertNotEquals(0, johnSmith.getId());
             Assert.assertNotEquals(0, stephanieClarckson.getId());
             Assert.assertNotEquals(0, lindaKovalsky.getId());
             Assert.assertNotEquals(0, frankSmith.getId());
-
             Assert.assertEquals(4, companyDao.count());
             Assert.assertEquals(4, employeeDao.count());
         } catch (Exception e) {
@@ -254,25 +206,17 @@ public class CompanyDaoTestSuite {
 
     //@Ignore
     @Test // Nr 3a
-    public void test_3a_DeleteEmployeesAndCompanyFromDao () {
+    public void test_3a_DeleteEmployeesFromDao () {
         //Given
         System.out.println("\n" + "Test 3a: testDeleteEmployeesAndCompanyFromDao");
+        employeesRemoveFromCompanies();
         companiesSaveToCompanyDao();
         employeesSaveToEmployeeDao();
-        employeesRemoveFromCompanies();
-        //System.out.println("\n" + "companyDao.count(): " + companyDao.count() +"\n"); //4
-        //System.out.println("\n" + "employeeDao.count(): " + employeeDao.count() +"\n"); //4
         //When
-        companyDao.delete(dataProjects);
+
         employeeDao.deleteAll();
-        //System.out.println("\n" + "companyDao.count(): " + companyDao.count() +"\n"); //3
-        //System.out.println("\n" + "employeeDao.count(): " + employeeDao.count() +"\n"); //3
-        //System.out.println("\n" + "dataProjects.size(): " + companyDao.findByName("Data Projects").size() + "\n"); //0
-        //System.out.println("\n" + "johnSmith.size(): " + employeeDao.findByLastname("Smith").size() + "\n"); //0
         //Then
         try {
-            Assert.assertEquals(1, companyDao.findByName("Data Projects").size());
-
             Assert.assertEquals(4, companyDao.count() );
             Assert.assertEquals(0, employeeDao.count());
         } catch (Exception e) {
@@ -284,31 +228,24 @@ public class CompanyDaoTestSuite {
     @Test //Nr 4
     public void test_4_saveTest3AndAddEmployesToCompanies () {
         //Given
-        companyDao.deleteAll();
-        employeeDao.deleteAll();
         employeesRemoveFromCompanies();
         System.out.println("\n" + "Test 4: test3AndAddEmployesToCompanies");
         //When
         companiesSaveToCompanyDao();
         employeesSaveToEmployeeDao();
         employeesAddToCompanies ();
-
         //Then
         try {
             Assert.assertNotEquals(0, dataProjects.getId());
             Assert.assertNotEquals(0, datsunCorp.getId());
             Assert.assertNotEquals(0, generalMotors.getId());
             Assert.assertNotEquals(0, generalli.getId());
-
             Assert.assertNotEquals(0, johnSmith.getId());
             Assert.assertNotEquals(0, stephanieClarckson.getId());
             Assert.assertNotEquals(0, lindaKovalsky.getId());
             Assert.assertNotEquals(0, frankSmith.getId());
-
             Assert.assertEquals(4, companyDao.count());
             Assert.assertEquals(4, employeeDao.count());
-            //printEmployeesIds ();
-            //printCompaniesIds ();
         } catch (Exception e) {
             System.out.println("\n" + "Test 4: test3AndAddEmployesToCompanies  - exception" + "\n");
         }
@@ -317,8 +254,6 @@ public class CompanyDaoTestSuite {
     @Test //Nr 5
     public void test_5_CheckAnddFindEmployeByName() {
         //Given
-        companyDao.deleteAll();
-        employeeDao.deleteAll();
         employeesRemoveFromCompanies();
         System.out.println("\n" + "Test 5: testCheckFindEmployeByName");
         companiesSaveToCompanyDao();
@@ -329,13 +264,11 @@ public class CompanyDaoTestSuite {
         List<Employee> employeesWithThisLastname2 = employeeDao.retrieveWithThisLastname("Kovalsky");
         //Then
         try {
-            Assert.assertEquals(2 , employeesWithThisLastname1.size());
-            Assert.assertEquals(1 , employeesWithThisLastname2.size());
+            Assert.assertEquals(2, employeesWithThisLastname1.size());
+            Assert.assertEquals(1, employeesWithThisLastname2.size());
             Assert.assertEquals(4, companyDao.count());
             Assert.assertEquals(4, employeeDao.count());
-            System.out.println("\n" + "employeeDao.retrieveWithThisLastname(Smith): " + employeeDao.retrieveWithThisLastname("Smith").size() +"\n"); //2
-            System.out.println("\n" + "employeeDao.retrieveWithThisLastname(Kovalsky): " + employeeDao.retrieveWithThisLastname("Kovalsky").size() +"\n"); //1
-        } catch (Exception e) {
+        }   catch (Exception e) {
             System.out.println("\n" + "Test 5: testCheckFindEmployeByName  - exception" + "\n");
         }
     }
@@ -344,8 +277,6 @@ public class CompanyDaoTestSuite {
     @Test //Nr 6
     public void test_6_CheckFindCompanyByName() {
         //Given
-        companyDao.deleteAll();
-        employeeDao.deleteAll();
         employeesRemoveFromCompanies();
         System.out.println("\n" + "Test 6: testCheckFindCompanyByName");
         companiesSaveToCompanyDao();
@@ -360,56 +291,39 @@ public class CompanyDaoTestSuite {
             Assert.assertEquals(2 , companiesWithNamesSpec2 .size());
             Assert.assertEquals(4, companyDao.count());
             Assert.assertEquals(4, employeeDao.count());
-            System.out.println("\n" + "companyDao.retrieveWithThisNamesSpec(Dat): " + companyDao.retrieveWithThisNamesSpec("Dat").size() +"\n"); //2
-            System.out.println("\n" + "companyDao.retrieveWithThisNamesSpec(Gen): " + companyDao.retrieveWithThisNamesSpec("Gen").size() +"\n"); //2
         } catch (Exception e) {
             System.out.println("\n" + "Test 6: testCheckFindCompanyByName  - exception" + "\n");
         }
     }
 
-
-
-    @Ignore
+    //@Ignore
     @Test // nr 7
     public void test_7_deleteCompaniesFromDao () {
         //Given
-        companyDao.deleteAll();
-        employeeDao.deleteAll();
+        employeesRemoveFromCompanies();
         System.out.println("\n" + "Test 7: deleteCompaniesFromDao");
         companiesSaveToCompanyDao();
         employeesSaveToEmployeeDao();
         employeesAddToCompanies ();
-        System.out.println("\n" + "companyDao.count(): " + companyDao.count() + "\n"); //4
-        System.out.println("\n" + "employeeDao.count(): " + employeeDao.count() + "\n"); //4
-
-        //When
         companyDao.deleteAll();
-         System.out.println("\n" + "companyDao.count(): " + companyDao.count() + "\n"); //4
         //Then
-
         try {
-                Assert.assertEquals(0, companyDao.count());
+            Assert.assertEquals(0, companyDao.count());
         } catch (Exception e) {
-                System.out.println("\n" + "Test 7: deleteCompaniesInDao  - exception" + "\n");
+            System.out.println("\n" + "Test 7: deleteCompaniesInDao  - exception" + "\n");
         }
     }
-    @Ignore
+    //@Ignore
     @Test // nr 8
     public void test_8_deleteEmployeeFromDao () {
         //Given
-        companyDao.deleteAll();
-        employeeDao.deleteAll();
+        employeesRemoveFromCompanies();
         System.out.println("\n" + "Test 8: deleteEmployeeFromDao()"); //4
         companiesSaveToCompanyDao();
         employeesSaveToEmployeeDao();
         employeesAddToCompanies ();
-        System.out.println("\n" + "companyDao.count(): " + companyDao.count() + "\n"); //4
-        System.out.println("\n" + "employeeDao.count(): " + employeeDao.count() + "\n"); //4
-
         //When
         employeeDao.deleteAll();
-        System.out.println("\n" + "employeeDao.count(): " + employeeDao.count() + "\n"); //4
-
         //Then
         try {
             Assert.assertEquals(0, employeeDao.count());
@@ -418,25 +332,18 @@ public class CompanyDaoTestSuite {
         }
     }
 
-    @Ignore
+    //@Ignore
     @Test // nr 9
     public void test_9_deleteCompanyAndEmployeeXXXFromDao () {
         //Given
-        System.out.println("\n" + "Test 9: deleteCompanyAndEmployeeXXXFromDao"); //4
-        companyDao.deleteAll();
-        employeeDao.deleteAll();
+        //System.out.println("\n" + "Test 9: deleteCompanyAndEmployeeXXXFromDao");
+        employeesRemoveFromCompanies();
         companiesSaveToCompanyDao();
         employeesSaveToEmployeeDao();
-        employeesAddToCompanies ();
-        System.out.println("\n" + "companyDao.count(): " + companyDao.count() + "\n"); //4
-        System.out.println("\n" + "employeeDao.count(): " + employeeDao.count() + "\n"); //4
-
+        employeesAddToCompanies();
         //When
         companyDao.deleteAll();
         employeeDao.deleteAll();
-        System.out.println("\n" + "companyDao.count(): " + companyDao.count() + "\n"); //4
-        System.out.println("\n" + "employeeDao.count(): " + employeeDao.count() + "\n"); //4
-
         //Then
         try {
             Assert.assertEquals(0, companyDao.count());
@@ -444,41 +351,6 @@ public class CompanyDaoTestSuite {
         } catch (Exception e) {
             System.out.println("\n" + "Test 9: deleteCompanyAndEmployeeXXXFromDao  - exception" + "\n");
         }
+
     }
-
-    //@Ignore
-    @Test
-    public void test_0_checkCompaniesAndEmployeesInDao () {
-        //Given
-        System.out.println("\n" + "dataProjects.getName(): " + dataProjects.getName() +"\n"); //Data Projects
-        System.out.println("\n" + "dataProjects.getId(): " + dataProjects.getId() +"\n"); //0
-        System.out.println("\n" + "datsunCorp.getId(): " + datsunCorp.getId() +"\n"); //0
-        System.out.println("\n" + "generalMotors.getId(): " + generalMotors.getId() +"\n"); //0
-        System.out.println("\n" + "generalli.getId(): " + generalli.getId() +"\n"); //0
-
-        System.out.println("\n" + "johnSmith.getId(): " + johnSmith.getId() +"\n"); //0
-        System.out.println("\n" + "stephanieClarckson.getId(): " + stephanieClarckson.getId() +"\n"); //0
-        System.out.println("\n" + "lindaKovalsky.getId(): " + lindaKovalsky.getId() +"\n"); //0
-        System.out.println("\n" + "frankSmith.getId(): " + frankSmith.getId() +"\n"); //0
-
-        System.out.println("\n" + "companyDao.count(): " + companyDao.count() +"\n"); //4
-        System.out.println("\n" + "employeeDao.count(): " + employeeDao.count() +"\n"); //4
-        //When
-        System.out.println("\n" + "dataProjects: " + companyDao.findByName("Data Projects").size() +"\n"); //1
-        System.out.println("\n" + "Smith: " + employeeDao.findByLastname("Smith").size() +"\n"); //2
-        System.out.println("\n" + "employeDao(id)=1: " + employeeDao.findById(1).size() +"\n"); //1
-        System.out.println("\n" + "companyDao(id)=1: " + companyDao.findById(1).size() +"\n"); // 1
-        System.out.println("\n" + "employeeDao.retrieveWithThisLastname(Smith): " + employeeDao.retrieveWithThisLastname("Smith").size() +"\n"); //2
-        System.out.println("\n" + "employeeDao.retrieveWithThisLastname(Kovalsky): " + employeeDao.retrieveWithThisLastname("Kovalsky").size() +"\n"); //1
-        System.out.println("\n" + "companyDao.retrieveWithThisNamesSpec(Dat): " + companyDao.retrieveWithThisNamesSpec("Dat").size() +"\n"); //2
-        System.out.println("\n" + "companyDao.retrieveWithThisNamesSpec(Gen): " + companyDao.retrieveWithThisNamesSpec("Gen").size() +"\n"); //2
-
-        //Then
-        try {
-            Assert.assertEquals(0, 0);
-        } catch (Exception e) {
-            System.out.println("\n" + "Test: deleteCompaniesInDao  - exception" + "\n");
-        }
-    }
-
 }
